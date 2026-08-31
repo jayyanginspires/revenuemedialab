@@ -45,10 +45,11 @@ export default function MarketingMiniCourse() {
           <p>
             I&rsquo;ve helped launch a book to become a New York Times best-seller. I&rsquo;ve
             helped another break a Guinness World Record for the fastest-selling non-fiction book in
-            under 24 hours.
-            My own books have become Amazon best-sellers. I&rsquo;ve worked behind the scenes with
-            some of the biggest personal brands in business, and grown my own audience to over
-            500,000 followers.
+            under 24 hours. My own books have become Amazon best-sellers.
+          </p>
+          <p>
+            I&rsquo;ve worked behind the scenes with some of the biggest personal brands in
+            business, and grown my own audience to over 500,000 followers.
           </p>
           <p>
             I only say all that for people who don&rsquo;t know who I am or why they should keep
@@ -156,9 +157,12 @@ export default function MarketingMiniCourse() {
           </p>
           <p>
             Power is relative. A bartender has power in the bar, because they control who gets a
-            drink and how fast. Once they step outside the bar, that power is gone. A famous
-            investor has power in a meeting with founders, because the founders want their money.
-            But that same investor has low power compared to the coach at a kids&rsquo; soccer game.
+            drink and how fast. Once they step outside the bar, that power is gone.
+          </p>
+          <p>
+            A famous investor has power in a meeting with founders, because the founders want their
+            money. But that same investor has low power compared to the coach at a kids&rsquo;
+            soccer game.
           </p>
           <p>You can show power 2 main ways:</p>
           <ul>
@@ -226,9 +230,12 @@ export default function MarketingMiniCourse() {
           <ArticleH3>A note on going viral</ArticleH3>
           <p>
             Going viral does matter. People often say you only need 1,000 true fans to make a living
-            online. Sure, but your first 1,000 followers are not going to be your first 1,000 true
-            fans. You&rsquo;re probably going to have to get to 10,000 or 100,000 followers and
-            nurture them into fans.
+            online.
+          </p>
+          <p>
+            Sure, but your first 1,000 followers are not going to be your first 1,000 true fans.
+            You&rsquo;re probably going to have to get to 10,000 or 100,000 followers and nurture
+            them into fans.
           </p>
           <p>There are 2 approaches:</p>
           <ul>
@@ -295,10 +302,15 @@ export default function MarketingMiniCourse() {
           <p>
             Our north star goal was growing his email newsletter ahead of his book launch. So we
             asked: of the platforms we&rsquo;re posting on, which one is driving the most email
-            subscribers? Why don&rsquo;t we double down on that? On X, of the content we&rsquo;re
-            posting, which formats are driving the most email subscribers? Why don&rsquo;t we double
-            down on that? And if we&rsquo;re going to double down, how do we test before we invest?
-            We&rsquo;d post tweets, see what worked, then expand the winners into Twitter threads.
+            subscribers? Why don&rsquo;t we double down on that?
+          </p>
+          <p>
+            On X, of the content we&rsquo;re posting, which formats are driving the most email
+            subscribers? Why don&rsquo;t we double down on that?
+          </p>
+          <p>
+            And if we&rsquo;re going to double down, how do we test before we invest? We&rsquo;d
+            post tweets, see what worked, then expand the winners into Twitter threads.
           </p>
           <p>
             That&rsquo;s how the content multiplication system was born. This is how I still run my
@@ -349,9 +361,11 @@ export default function MarketingMiniCourse() {
           </p>
           <p>
             Organic content widens the outer circle, the number of people who are aware of you. Paid
-            ads widen the inner circle, the number of people who actually buy from you. The goal of
-            your content is to educate your audience about a problem they may have. The goal of your
-            ads is to speak to the people who already have that problem.
+            ads widen the inner circle, the number of people who actually buy from you.
+          </p>
+          <p>
+            The goal of your content is to educate your audience about a problem they may have. The
+            goal of your ads is to speak to the people who already have that problem.
           </p>
           <p>
             When you write ads, talk more about pain aversion than promise. If you can articulate
@@ -437,9 +451,12 @@ export default function MarketingMiniCourse() {
             I&rsquo;ve been told I need to make my visual background more memorable, that I should
             wear the same color shirt so people recognize me. Those hacks and gimmicks are not
             branding. They&rsquo;re easy to do, and easy to &ldquo;deconstruct&rdquo; into breakdown
-            videos. But Hormozi isn&rsquo;t Hormozi because of his nose strips or his flannels. His
-            audience cares about those details because they feel deeply influenced by him. How?
-            Power, trust, likeness.
+            videos.
+          </p>
+          <p>
+            But Hormozi isn&rsquo;t Hormozi because of his nose strips or his flannels. His audience
+            cares about those details because they feel deeply influenced by him. How? Power, trust,
+            likeness.
           </p>
 
           <ArticleH2 id="apply-this">If you want to apply this to your own business</ArticleH2>
