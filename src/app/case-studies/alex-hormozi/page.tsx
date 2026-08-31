@@ -362,24 +362,12 @@ export default function AlexHormoziCaseStudy() {
             one of them Alex had said &ldquo;I even had to delay it by an extra six months.&rdquo;
             We had Leila say &ldquo;we even had to delay it.&rdquo;
           </p>
-          <ArticleH2>The four moves</ArticleH2>
+          <ArticleH2>The short version</ArticleH2>
           <ol>
-            <li>
-              <strong>Use the 6Ps.</strong> Answer People, Positioning, Promise, Proof, Priority
-              and Process before you write a line.
-            </li>
-            <li>
-              <strong>Optimize for AOV, not CPL.</strong> Tell the platform to chase buyers and it
-              will go find you buyers.
-            </li>
-            <li>
-              <strong>Battle test your hooks.</strong> Start from material that already worked, run
-              one ad per ad set, and write across every level of awareness.
-            </li>
-            <li>
-              <strong>Kaleidoscope your winners.</strong> Change one part at a time so you always
-              know which change did it.
-            </li>
+            <li>Use the 6Ps</li>
+            <li>Optimize for AOV, not CPL</li>
+            <li>Battle test your hooks</li>
+            <li>Kaleidoscope your winners</li>
           </ol>
         </CaseStudyArticle>
 
