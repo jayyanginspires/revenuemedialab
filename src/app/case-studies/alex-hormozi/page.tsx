@@ -362,7 +362,7 @@ export default function AlexHormoziCaseStudy() {
             one of them Alex had said &ldquo;I even had to delay it by an extra six months.&rdquo;
             We had Leila say &ldquo;we even had to delay it.&rdquo;
           </p>
-          <ArticleH2>The short version</ArticleH2>
+          <ArticleH2>TLDR:</ArticleH2>
           <ol>
             <li>Use the 6Ps</li>
             <li>Optimize for AOV, not CPL</li>
