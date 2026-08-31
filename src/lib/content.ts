@@ -93,7 +93,7 @@ export const CASE_STUDIES = [
 // for why each one looks the way it does (real logo vs. wordmark vs. photo).
 export const CLIENT_LOGOS = [
   { person: "Shelby Sapp", brand: "She Sells" },
-  { person: "Alex Hormozi", brand: "Acquisition.com" },
+  { person: "Alex Hormozi", secondPerson: "Leila Hormozi", brand: "Acquisition.com" },
   { person: "Noah Kagan", brand: "AppSumo" },
 ] as const;
 

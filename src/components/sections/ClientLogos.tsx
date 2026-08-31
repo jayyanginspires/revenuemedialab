@@ -65,15 +65,21 @@ export function ClientLogos() {
           Worked with the biggest names in the game...
         </p>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-5">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
           {CLIENT_LOGOS.map((c) => (
             <div
               key={c.person}
               className="group flex min-h-[160px] flex-col items-center justify-center gap-4 rounded-xl border border-border bg-white px-6 py-8 shadow-[0_1px_0_rgba(18,24,26,0.03),0_16px_28px_-20px_rgba(18,24,26,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 md:min-h-[190px]"
             >
               <LogoMark brand={c.brand} />
-              <span className="eyebrow text-xs text-muted">
+              <span className="eyebrow text-center text-xs text-muted">
                 {PERSON_IS_THE_MARK.has(c.brand) ? c.brand : c.person}
+                {"secondPerson" in c && c.secondPerson ? (
+                  <>
+                    <br />
+                    {c.secondPerson}
+                  </>
+                ) : null}
               </span>
             </div>
           ))}
