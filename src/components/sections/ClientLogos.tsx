@@ -18,7 +18,7 @@ function LogoMark({ brand }: { brand: (typeof CLIENT_LOGOS)[number]["brand"] }) 
     case "She Sells":
       return (
         <span
-          className="text-3xl italic text-foreground md:text-4xl"
+          className="text-2xl italic text-foreground md:text-3xl"
           style={{ fontFamily: "Georgia, 'Playfair Display', serif", fontWeight: 700 }}
         >
           she sells
@@ -32,7 +32,7 @@ function LogoMark({ brand }: { brand: (typeof CLIENT_LOGOS)[number]["brand"] }) 
           alt="Acquisition.com"
           width={439}
           height={41}
-          className="h-6 w-auto object-contain invert md:h-7"
+          className="h-7 w-auto object-contain invert md:h-8"
         />
       );
     case "AppSumo":
@@ -65,14 +65,16 @@ export function ClientLogos() {
           Worked with the biggest names in the game...
         </p>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
+        <div className="mt-8 flex flex-wrap items-stretch justify-center gap-4 sm:gap-5">
           {CLIENT_LOGOS.map((c) => (
             <div
               key={c.person}
-              className="group flex min-h-[160px] flex-col items-center justify-center gap-4 rounded-xl border border-border bg-white px-6 py-8 shadow-[0_1px_0_rgba(18,24,26,0.03),0_16px_28px_-20px_rgba(18,24,26,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 md:min-h-[190px]"
+              className="group flex w-full max-w-[300px] shrink-0 flex-col items-center justify-center gap-3 rounded-xl sm:w-[230px] md:w-[250px] min-h-[160px] border border-border bg-white px-6 py-8 shadow-[0_1px_0_rgba(18,24,26,0.03),0_16px_28px_-20px_rgba(18,24,26,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 md:min-h-[190px]"
             >
-              <LogoMark brand={c.brand} />
-              <span className="eyebrow text-center text-xs text-muted">
+              <span className="flex h-14 items-center justify-center md:h-16">
+                <LogoMark brand={c.brand} />
+              </span>
+              <span className="eyebrow flex min-h-9 flex-col items-center justify-start text-center text-xs leading-tight text-muted">
                 {PERSON_IS_THE_MARK.has(c.brand) ? c.brand : c.person}
                 {"secondPerson" in c && c.secondPerson ? (
                   <>
