@@ -12,7 +12,7 @@ import {
 import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: `Free Marketing Mini Course — ${SITE.name}`,
+  title: `The Marketing Philosophy Behind Everything I Do — ${SITE.name}`,
   description:
     "Six years of marketing advice: current vs. future demand, the PTL framework for building brand, the content multiplication system, and how to capture demand with ads.",
 };
@@ -24,7 +24,7 @@ export default function MarketingMiniCourse() {
       <main className="bg-white">
         <CaseStudyHero
           eyebrow="Free mini course"
-          headline="Free Marketing Mini Course"
+          headline="The Marketing Philosophy Behind Everything I Do"
           dek={
             <>
               The marketing philosophy behind everything I do. Six years of advice, for clients and
@@ -42,7 +42,8 @@ export default function MarketingMiniCourse() {
         <CaseStudyArticle>
           <p>
             I&rsquo;ve helped launch a book to become a New York Times best-seller. I&rsquo;ve
-            helped another break a Guinness World Record for the fastest-selling non-fiction book.
+            helped another break a Guinness World Record for the fastest-selling non-fiction book in
+            under 24 hours.
             My own books have become Amazon best-sellers. I&rsquo;ve worked behind the scenes with
             some of the biggest personal brands in business, and grown my own audience to over
             500,000 followers.
@@ -290,7 +291,7 @@ export default function MarketingMiniCourse() {
           </p>
           <ol>
             <li>I tweet 4 to 10 times a day (idea playground)</li>
-            <li>I have Stanley flag which tweets outperform our average</li>
+            <li>My AI assistant Stanley flags which tweets outperform our average</li>
             <li>
               I take that tweet and find 4 to 5 others like it and post them as an Instagram carousel
             </li>
@@ -462,7 +463,7 @@ export default function MarketingMiniCourse() {
         </CaseStudyArticle>
 
         <div className="pb-20">
-          <CaseStudyClosing prompt="If you're thinking, that was a masterclass, where can I learn more? First, thank you, I'm flattered. Second, speak with my team about how we can help you dial in your marketing systems." />
+          <CaseStudyClosing prompt="If you want help dialing in your own marketing systems, speak with my team." />
         </div>
       </main>
       <Footer />
