@@ -88,14 +88,12 @@ export const CASE_STUDIES = [
   },
 ] as const;
 
-// The five brands featured as logo proof directly under the hero. Each
+// The three brands featured as logo proof directly under the hero. Each
 // renders with its own bespoke mark in <ClientLogos> — see that component
 // for why each one looks the way it does (real logo vs. wordmark vs. photo).
 export const CLIENT_LOGOS = [
   { person: "Shelby Sapp", brand: "She Sells" },
   { person: "Alex Hormozi", brand: "Acquisition.com" },
-  { person: "Codie Sanchez", brand: "Contrarian Thinking" },
-  { person: "Matt Gray", brand: "Founder OS" },
   { person: "Noah Kagan", brand: "AppSumo" },
 ] as const;
 

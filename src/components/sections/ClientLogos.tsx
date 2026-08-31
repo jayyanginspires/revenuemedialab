@@ -1,19 +1,18 @@
 import { CLIENT_LOGOS } from "@/lib/content";
 
-// For brands whose mark already spells out the person's name (Matt Gray,
-// Noah Kagan), the caption underneath shows the brand instead — otherwise
-// it'd just repeat the name shown right above it.
+// For brands whose mark already spells out the person's name (Noah Kagan),
+// the caption underneath shows the brand instead — otherwise it'd just
+// repeat the name shown right above it.
 const PERSON_IS_THE_MARK: ReadonlySet<(typeof CLIENT_LOGOS)[number]["brand"]> = new Set([
-  "Founder OS",
   "AppSumo",
 ]);
 
-// Each of the five brands gets its own bespoke mark rather than a generic
+// Each of the three brands gets its own bespoke mark rather than a generic
 // logo slot: a real logo file where the brand has one (Acquisition.com), a
-// recreation of their actual wordmark/seal where the "logo" is really just
-// distinctive typography (She Sells, Contrarian Thinking, Matt Gray), and a
-// profile photo where the person *is* the brand (Noah Kagan) — matching how
-// each of these actually presents itself on its own site.
+// recreation of their actual wordmark where the "logo" is really just
+// distinctive typography (She Sells), and a profile photo where the person
+// *is* the brand (Noah Kagan) — matching how each of these actually
+// presents itself on its own site.
 function LogoMark({ brand }: { brand: (typeof CLIENT_LOGOS)[number]["brand"] }) {
   switch (brand) {
     case "She Sells":
@@ -36,22 +35,6 @@ function LogoMark({ brand }: { brand: (typeof CLIENT_LOGOS)[number]["brand"] }) 
           className="h-6 w-auto object-contain invert md:h-7"
         />
       );
-    case "Contrarian Thinking":
-      return (
-        <span className="flex items-center gap-3">
-          <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-foreground/70 md:h-12 md:w-12">
-            <span className="absolute inset-[3px] rounded-full border border-foreground/25" />
-            <span className="font-serif text-base italic font-bold text-foreground">CT</span>
-          </span>
-          <span className="font-serif text-base italic font-semibold leading-tight text-foreground md:text-lg">
-            Contrarian
-            <br />
-            Thinking
-          </span>
-        </span>
-      );
-    case "Founder OS":
-      return <span className="text-lg font-black uppercase tracking-wide text-foreground md:text-xl">Matt Gray.</span>;
     case "AppSumo":
       return (
         <span className="flex items-center gap-3">
