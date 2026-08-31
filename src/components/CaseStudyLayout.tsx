@@ -11,17 +11,19 @@ export function CaseStudyHero({
   dek,
   stats,
   image,
+  eyebrow = "Case study",
 }: {
   headline: string;
   dek: ReactNode;
   stats: Stat[];
   image?: { src: string; alt: string; caption: string };
+  eyebrow?: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-background-pale">
       <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-3xl px-6 pb-14 pt-14 text-center md:pt-20">
-        <p className="text-muted">Case study</p>
+        <p className="text-muted">{eyebrow}</p>
         <h1 className="h1-display mt-4 text-foreground">{headline}</h1>
         <p className="mx-auto mt-5 max-w-xl leading-relaxed text-muted">{dek}</p>
 
