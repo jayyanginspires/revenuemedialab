@@ -35,6 +35,12 @@ export default function AlexHormoziCaseStudy() {
             { value: "1,500+", label: "Pieces Filmed" },
             { value: "2,600+", label: "Ads Run" },
           ]}
+          image={{
+            src: "/images/guinness-certificate.jpg",
+            alt: "Guinness World Records certificate awarded to Jay Yang for taking part in the fastest-selling non-fiction book record.",
+            caption:
+              "The fastest-selling non-fiction book — $100M Money Models, 2,917,443 copies, 17 August 2025.",
+          }}
         />
 
         <CaseStudyArticle>

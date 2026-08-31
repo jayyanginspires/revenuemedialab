@@ -82,10 +82,8 @@ export const CASE_STUDIES = [
     brand: "$100M Money Models",
     headline: "A Guinness World Record book launch",
     image: {
-      // TODO: swap for the Guinness World Record certificate once the file
-      // is available — this is a placeholder so the card isn't broken.
-      src: "/logos/alex-hormozi.jpg",
-      alt: "Alex Hormozi.",
+      src: "/images/guinness-card.jpg",
+      alt: "Guinness World Records certificate awarded to Jay Yang for the fastest-selling non-fiction book.",
     },
   },
   {
