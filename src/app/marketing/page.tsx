@@ -8,6 +8,8 @@ import {
   CaseStudyArticle,
   CaseStudyClosing,
   CaseStudyHero,
+  TableOfContents,
+  TryThis,
 } from "@/components/CaseStudyLayout";
 import { SITE } from "@/lib/content";
 
@@ -54,7 +56,23 @@ export default function MarketingMiniCourse() {
             the philosophy behind everything I do, for clients and for myself.
           </p>
 
-          <ArticleH2>What is marketing?</ArticleH2>
+          <TableOfContents
+            minutes={13}
+            items={[
+              { id: "what-is-marketing", label: "What is marketing?" },
+              { id: "two-types-of-demand", label: "Future demand vs. current demand" },
+              { id: "create-future-demand", label: "How to create future demand" },
+              { id: "why-brand-matters", label: "Why brand matters" },
+              { id: "content-multiplication", label: "The content multiplication system" },
+              { id: "capture-current-demand", label: "How to capture current demand" },
+              { id: "how-they-play-together", label: "How they play together" },
+              { id: "hot-take-on-branding", label: "A hot take on branding" },
+              { id: "apply-this", label: "If you want to apply this to your own business" },
+              { id: "recap", label: "Recap" },
+            ]}
+          />
+
+          <ArticleH2 id="what-is-marketing">What is marketing?</ArticleH2>
           <p>
             Marketing is the process of reaching and converting customers. If you can get in front
             of the right people, and then convince them to buy your thing, you win.
@@ -84,7 +102,7 @@ export default function MarketingMiniCourse() {
             are actually 2 types of demand.
           </p>
 
-          <ArticleH2>Future demand vs. current demand</ArticleH2>
+          <ArticleH2 id="two-types-of-demand">Future demand vs. current demand</ArticleH2>
           <p>
             What&rsquo;s the likelihood you buy a new car in the next 2 weeks? Probably low. What
             about in the next 20 years? Probably a lot higher.
@@ -112,7 +130,7 @@ export default function MarketingMiniCourse() {
             Let&rsquo;s talk about creating future demand first, then capturing current demand.
           </p>
 
-          <ArticleH2>How to create future demand</ArticleH2>
+          <ArticleH2 id="create-future-demand">How to create future demand</ArticleH2>
           <p>Future demand is the byproduct of brand.</p>
           <p>
             Brand is the association between two things: one you know about, and one you don&rsquo;t
@@ -149,9 +167,7 @@ export default function MarketingMiniCourse() {
             </li>
             <li>Visually (a picture of your big building)</li>
           </ul>
-          <p>
-            <strong>Try this:</strong> what do your customers want, both internally and externally?
-          </p>
+          <TryThis>What do your customers want, both internally and externally?</TryThis>
 
           <ArticleH3>Trust</ArticleH3>
           <p>Trust is the belief that following your direction will produce a good result.</p>
@@ -172,15 +188,15 @@ export default function MarketingMiniCourse() {
             you follow her cake recipe and it comes out right, the next time she shares a recipe,
             you&rsquo;ll go grab your flour.
           </p>
-          <p>
-            <strong>Try this:</strong> what step-by-step directions can you give your customers to
-            get positive results? For example:
-          </p>
-          <ul>
-            <li>Use these 50 hooks in your content</li>
-            <li>Read this book on storytelling</li>
-            <li>Use this tool to automate posting your content</li>
-          </ul>
+          <TryThis>
+            What step-by-step directions can you give your customers to get positive results? For
+            example:
+            <ul className="mt-3 list-disc space-y-1.5 pl-5">
+              <li>Use these 50 hooks in your content</li>
+              <li>Read this book on storytelling</li>
+              <li>Use this tool to automate posting your content</li>
+            </ul>
+          </TryThis>
 
           <ArticleH3>Likeness</ArticleH3>
           <p>Likeness is how similar you are to the person you&rsquo;re trying to influence.</p>
@@ -197,12 +213,11 @@ export default function MarketingMiniCourse() {
               speak)
             </li>
           </ul>
-          <p>
-            <strong>Try this:</strong> what are your customers&rsquo; internal and external
-            attributes? For example: ex-athletes who wear athletic clothing, mid-30s to 40s, work a
-            9-to-5, want to get back in shape, want to feel athletic and powerful, and want to take
-            agency over their life.
-          </p>
+          <TryThis>
+            What are your customers&rsquo; internal and external attributes? For example:
+            ex-athletes who wear athletic clothing, mid-30s to 40s, work a 9-to-5, want to get back
+            in shape, want to feel athletic and powerful, and want to take agency over their life.
+          </TryThis>
           <p>
             To build an influential brand, demonstrate those 3 things, power, trust, and likeness,
             over and over and over again.
@@ -231,7 +246,7 @@ export default function MarketingMiniCourse() {
             fun, can do it for longer, and build a more durable brand.
           </p>
 
-          <ArticleH2>Why brand matters</ArticleH2>
+          <ArticleH2 id="why-brand-matters">Why brand matters</ArticleH2>
           <p>
             We all know a business survives because of one equation: LTV to CAC. Basically, how much
             does it cost to acquire a customer, and how much do you make from them over their
@@ -269,7 +284,7 @@ export default function MarketingMiniCourse() {
             <li>And are already pre-sold into your beliefs and values</li>
           </ul>
 
-          <ArticleH2>The content multiplication system</ArticleH2>
+          <ArticleH2 id="content-multiplication">The content multiplication system</ArticleH2>
           <p>
             What do all the top personal brands have in common? They&rsquo;re prolific.
           </p>
@@ -327,7 +342,7 @@ export default function MarketingMiniCourse() {
             demand.
           </p>
 
-          <ArticleH2>How to capture current demand</ArticleH2>
+          <ArticleH2 id="capture-current-demand">How to capture current demand</ArticleH2>
           <p>
             Organic content is great for creating future demand and getting people aware of you.
             Direct response, or ads, is where you right hook your audience.
@@ -405,7 +420,7 @@ export default function MarketingMiniCourse() {
             <li>What happens next (optional)</li>
           </ul>
 
-          <ArticleH2>How they play together</ArticleH2>
+          <ArticleH2 id="how-they-play-together">How they play together</ArticleH2>
           <p>
             Brand makes the circle bigger. Direct response converts the 1%. It&rsquo;s no longer
             organic versus paid. It&rsquo;s explore with organic, exploit with paid.
@@ -417,7 +432,7 @@ export default function MarketingMiniCourse() {
             there.
           </p>
 
-          <ArticleH2>A hot take on branding</ArticleH2>
+          <ArticleH2 id="hot-take-on-branding">A hot take on branding</ArticleH2>
           <p>
             I&rsquo;ve been told I need to make my visual background more memorable, that I should
             wear the same color shirt so people recognize me. Those hacks and gimmicks are not
@@ -427,7 +442,7 @@ export default function MarketingMiniCourse() {
             Power, trust, likeness.
           </p>
 
-          <ArticleH2>If you want to apply this to your own business</ArticleH2>
+          <ArticleH2 id="apply-this">If you want to apply this to your own business</ArticleH2>
           <p>A few questions worth sitting with:</p>
           <ul>
             <li>If I tripled your leads, what would happen?</li>
@@ -452,7 +467,7 @@ export default function MarketingMiniCourse() {
             <li>What&rsquo;s an underpriced opportunity you could be first to?</li>
           </ul>
 
-          <ArticleH2>Recap</ArticleH2>
+          <ArticleH2 id="recap">Recap</ArticleH2>
           <p>
             There are 2 types of demand: current and future. To create future demand, demonstrate
             power, trust, and likeness. Brand improves your LTV to CAC. Use the content

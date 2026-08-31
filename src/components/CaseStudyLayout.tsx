@@ -60,8 +60,56 @@ export function Callout({ children }: { children: ReactNode }) {
   );
 }
 
-export function ArticleH2({ children }: { children: ReactNode }) {
-  return <h2 className="h3-display mt-10 text-foreground">{children}</h2>;
+export function ArticleH2({ children, id }: { children: ReactNode; id?: string }) {
+  return (
+    <h2 id={id} className="h3-display mt-10 scroll-mt-24 text-foreground">
+      {children}
+    </h2>
+  );
+}
+
+// Jump links for long reads. Anchors must match the ids passed to ArticleH2.
+export function TableOfContents({
+  items,
+  minutes,
+}: {
+  items: { id: string; label: string }[];
+  minutes: number;
+}) {
+  return (
+    <nav
+      aria-label="Contents"
+      className="my-8 rounded-xl border border-border bg-background-pale p-6"
+    >
+      <div className="flex items-baseline justify-between gap-4">
+        <p className="eyebrow text-accent-dark">Contents</p>
+        <p className="text-sm text-muted">{minutes} min read</p>
+      </div>
+      <ol className="mt-4 space-y-2">
+        {items.map((item, i) => (
+          <li key={item.id} className="flex gap-3 text-[15px] leading-snug">
+            <span className="w-5 shrink-0 tabular-nums text-muted">{i + 1}.</span>
+            <a
+              href={`#${item.id}`}
+              className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+// The actionable prompts in the essay, set apart from quoted material.
+export function TryThis({ children }: { children: ReactNode }) {
+  return (
+    <div className="my-6 rounded-xl border border-accent/30 bg-white p-5">
+      <p className="eyebrow mb-2 text-accent-dark">Try this</p>
+      <div className="leading-relaxed text-foreground">{children}</div>
+    </div>
+  );
 }
 
 export function ArticleH3({ children }: { children: ReactNode }) {
