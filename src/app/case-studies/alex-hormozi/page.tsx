@@ -211,13 +211,7 @@ export default function AlexHormoziCaseStudy() {
               for the vast majority of my material wealth.
             </li>
           </ul>
-          <p>
-            Almost none of them mention the book. The 6Ps explain why they work. &ldquo;Business
-            owners, check this out&rdquo; is People. &ldquo;The rumors are true&rdquo; and
-            &ldquo;I&rsquo;m throwing a party&rdquo; are Priority, something is happening and
-            you&rsquo;re not in on it. That last one does Promise, Proof and Process in one
-            sentence.
-          </p>
+          <p>Almost none of them mention the book.</p>
 
           <ArticleH2>Kaleidoscope every winner</ArticleH2>
           <p>
@@ -348,7 +342,7 @@ export default function AlexHormoziCaseStudy() {
             polished version or the phone version did better.
           </p>
 
-          <ArticleH3>Hand it to an editor</ArticleH3>
+          <ArticleH3>Re-cut it instead of reshooting</ArticleH3>
           <p>
             An editor can pull a dozen more versions out of a winner without anyone going back on
             camera: change the speed, add captions, put a headline over the top, re-crop it.
