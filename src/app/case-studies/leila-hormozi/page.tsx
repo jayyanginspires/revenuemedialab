@@ -64,9 +64,6 @@ export default function LeilaHormoziCaseStudy() {
               set.
             </li>
             <li>
-              <strong>Mozi Minutes.</strong> 10 emails a month, including research, drafting and QA.
-            </li>
-            <li>
               <strong>YouTube Community.</strong> 7+ posts a week on Leila&rsquo;s channel.
             </li>
             <li>
