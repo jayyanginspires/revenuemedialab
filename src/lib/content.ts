@@ -77,6 +77,18 @@ export const CASE_STUDIES = [
     },
   },
   {
+    slug: "alex-hormozi",
+    person: "Alex Hormozi",
+    brand: "$100M Money Models",
+    headline: "A Guinness World Record book launch",
+    image: {
+      // TODO: swap for the Guinness World Record certificate once the file
+      // is available — this is a placeholder so the card isn't broken.
+      src: "/logos/alex-hormozi.jpg",
+      alt: "Alex Hormozi.",
+    },
+  },
+  {
     slug: "shelby-sapp",
     person: "Shelby Sapp",
     brand: "SheSells Academy",
