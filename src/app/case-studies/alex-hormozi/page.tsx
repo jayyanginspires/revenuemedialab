@@ -42,7 +42,7 @@ export default function AlexHormoziCaseStudy() {
             It sold 2,917,443 copies and took the Guinness World Record for fastest-selling
             non-fiction book. The launch did $105M.
           </p>
-          <p>We filmed over 1,500 pieces and ran over 2,600 ads.</p>
+          <p>We filmed over 1,500 pieces of creative and ran over 2,600 ads.</p>
           <p>Here&rsquo;s how:</p>
 
           <ArticleH2>Answer 6 questions before you write</ArticleH2>
@@ -77,8 +77,8 @@ export default function AlexHormoziCaseStudy() {
             &ldquo;you can scale as fast as you want without raising any money at all.&rdquo;
           </p>
           <p>
-            <strong>Proof.</strong> Why they should believe you. Trust is belief with evidence,
-            belief without evidence is faith. He runs a $250M portfolio, he sold two thirds of his
+            <strong>Proof.</strong> Why they should believe you. Trust is belief with evidence. Belief
+            without evidence is faith. He runs a $250M portfolio, he sold two thirds of his
             last company for $46.2M, and over a million people bought his last two books. If you
             were deaf and mute and could only point at what&rsquo;s in the room, you could point at
             all three.
@@ -100,8 +100,9 @@ export default function AlexHormoziCaseStudy() {
 
           <ArticleH2>Optimize for AOV, not CPL</ArticleH2>
           <p>
-            Cost per lead is the number that comes in first, so it&rsquo;s the one people watch. It
-            rewards whichever ad is best at getting an email out of anybody.
+            Most people optimize for cost per lead because it&rsquo;s the first number that comes
+            back. But it rewards whichever ad is best at pulling an email out of anybody, whether
+            or not that person would ever buy.
           </p>
           <p>
             We ran the same creative in two campaigns, one optimized for registrations and one for
@@ -119,8 +120,8 @@ export default function AlexHormoziCaseStudy() {
           <p>
             Two conditions before you try it: you need enough purchase volume for the platform to
             learn on, and you need something above the free registration worth optimizing toward.
-            Ours was pre-order the book, then a roughly $300 order for 15 copies that unlocked two
-            of Alex&rsquo;s internal handbooks.
+            Ours was the book pre-order, and above that a roughly $300 order for 15 copies that
+            unlocked two of Alex&rsquo;s internal handbooks.
           </p>
           <p>
             What you sell decides how much you can afford to pay for a lead. That&rsquo;s settled
@@ -138,9 +139,9 @@ export default function AlexHormoziCaseStudy() {
             video with Alex in them.
           </p>
           <p>
-            We ran one ad per ad set, all broad, no targeting. Every piece of creative had to earn
-            its own budget instead of hiding behind a good one, and inside 36 to 48 hours you knew
-            whether it was worth keeping.
+            We ran one ad per ad set, all broad, no targeting. One ad per set means a weak ad
+            can&rsquo;t coast on the budget a winner is pulling in beside it, so every piece had to
+            earn its own spend. Inside 36 to 48 hours you knew whether to keep it.
           </p>
           <p>
             The test can only pick from what you give it. When you buy broad, the people seeing your
@@ -228,7 +229,8 @@ export default function AlexHormoziCaseStudy() {
           <p>
             &ldquo;Wanna hear something insane&rdquo; ran against a data stack, a giant tennis ball,
             a news microphone, a giant purple paper wall, a money bin, and a ping pong table. The
-            line changes a little each time, so you get versions stacked on top of versions:
+            line shifts slightly with each one, so six props against three versions of the line is
+            eighteen ads out of a single idea:
           </p>
           <Callout>
             Wanna hear something insane?
@@ -264,9 +266,9 @@ export default function AlexHormoziCaseStudy() {
             wanna send you a gazillion dollars of free stuff.
           </Callout>
           <p>
-            The idea is the same in all of them. The differences: speed of the open, whether a
-            reason comes attached, and how it&rsquo;s worded. Then each one got cut at 40 seconds
-            and at 50 seconds.
+            The idea is identical in all of them. What changes is how fast it reaches the
+            question, whether a reason comes attached, and the wording. Then we cut each one at 40
+            seconds and again at 50.
           </p>
 
           <ArticleH3>Make the joke bigger</ArticleH3>
