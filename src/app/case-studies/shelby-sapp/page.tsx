@@ -11,7 +11,7 @@ import {
 import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: `How I grew Shelby Sapp's LinkedIn to 20,000 followers in under 6 months — ${SITE.name}`,
+  title: `How we grew Shelby Sapp's LinkedIn to 20,000 followers in under 6 months — ${SITE.name}`,
   description: "How we restarted a dormant LinkedIn account from zero momentum to 20,000 followers.",
 };
 
@@ -21,7 +21,7 @@ export default function ShelbySappCaseStudy() {
       <Header />
       <main className="bg-white">
         <CaseStudyHero
-          headline="How I Grew Shelby Sapp's LinkedIn to 20,000 Followers in Under 6 Months"
+          headline="How We Grew Shelby Sapp's LinkedIn to 20,000 Followers in Under 6 Months"
           dek="Shelby founded the world's largest all-women remote sales academy. She hadn't posted on LinkedIn in over three years."
           stats={[
             { value: "20,000+", label: "Followers" },
@@ -36,7 +36,7 @@ export default function ShelbySappCaseStudy() {
         />
 
         <CaseStudyArticle>
-          <p>I grew Shelby Sapp&apos;s LinkedIn to 20,000 followers in under 6 months. Here&apos;s how.</p>
+          <p>We grew Shelby Sapp&apos;s LinkedIn to 20,000 followers in under 6 months. Here&apos;s how.</p>
 
           <ArticleH2>1/ Reintroduction post</ArticleH2>
           <p>
@@ -73,8 +73,8 @@ export default function ShelbySappCaseStudy() {
 
           <ArticleH2>5/ Hooks</ArticleH2>
           <p>
-            Your hook is 90% of a post&apos;s performance. I write 3 for every post and pick the
-            best one. I call it battle testing.
+            Your hook is 90% of a post&apos;s performance. We write 3 for every post and pick the
+            best one. We call it battle testing.
           </p>
 
           <ArticleH2>6/ Raw writing style</ArticleH2>
@@ -93,7 +93,7 @@ export default function ShelbySappCaseStudy() {
         </CaseStudyArticle>
 
         <div className="pb-20">
-          <CaseStudyClosing prompt="If you'd like me to help you design a content system that drives qualified leads, you can book a call with me here." />
+          <CaseStudyClosing prompt="If you'd like us to help you design a content system that drives qualified leads, you can book a call here." />
         </div>
       </main>
       <Footer />

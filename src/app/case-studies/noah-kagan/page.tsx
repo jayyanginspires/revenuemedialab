@@ -12,7 +12,7 @@ import {
 import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: `How I helped Noah Kagan gain 35,000+ email subscribers in 6 months — ${SITE.name}`,
+  title: `How we helped Noah Kagan gain 35,000+ email subscribers in 6 months — ${SITE.name}`,
   description: "How we built a content multiplication system for Noah Kagan's Million Dollar Weekend launch.",
 };
 
@@ -22,10 +22,10 @@ export default function NoahKaganCaseStudy() {
       <Header />
       <main className="bg-white">
         <CaseStudyHero
-          headline="How I Helped Noah Kagan Gain 35,000+ Active Email Subscribers in 6 Months"
+          headline="How We Helped Noah Kagan Gain 35,000+ Active Email Subscribers in 6 Months"
           dek={
             <>
-              I ran social and email content for Noah Kagan while he launched{" "}
+              We ran social and email content for Noah Kagan while he launched{" "}
               <em>Million Dollar Weekend</em>.
             </>
           }
@@ -49,7 +49,7 @@ export default function NoahKaganCaseStudy() {
             100,000 copies.
           </p>
           <p>
-            He was running AppSumo at the same time, so I only got about an hour of his time each
+            He was running AppSumo at the same time, so we only got about an hour of his time each
             week. Everything we published had to come out of that hour.
           </p>
           <p>
@@ -80,7 +80,7 @@ export default function NoahKaganCaseStudy() {
             is too generic. Your content should be one-of-one.
           </Callout>
 
-          <p>Here&apos;s a post I wrote with Noah:</p>
+          <p>Here&apos;s a post we wrote with Noah:</p>
 
           <Callout>
             I was employee #30 at Facebook. Then I got fired. Now I&apos;m the CEO of a $100
@@ -113,7 +113,7 @@ export default function NoahKaganCaseStudy() {
           </p>
           <p>We saved the hooks separately from the posts, which matters later.</p>
           <p>
-            I kept a second list of Noah&apos;s core ideas, the things he actually believes.
+            We kept a second list of Noah&apos;s core ideas, the things he actually believes.
             There were 17 of them. A few:
           </p>
           <ul>
@@ -128,11 +128,11 @@ export default function NoahKaganCaseStudy() {
           <ArticleH2>Say the same thing in a bunch of different ways</ArticleH2>
           <p>
             Once we had our top posts, it was about figuring out how to say the same thing in a
-            bunch of different ways. I call this the 3Rs.
+            bunch of different ways. We call this the 3Rs.
           </p>
 
           <ArticleH3>1/ Repost</ArticleH3>
-          <p>I like to repost all of my top posts every 90 days.</p>
+          <p>We repost all of our top posts every 90 days.</p>
           <p>
             People get weird about reposting. But less than half your audience saw it the first
             time, and the ones who did need to be reminded more than they need to be taught.
@@ -142,7 +142,7 @@ export default function NoahKaganCaseStudy() {
           <ArticleH3>2/ Repurpose</ArticleH3>
           <p>
             We&apos;d test an idea as a tweet first. If it worked, we&apos;d write it up as a
-            longer post. Then Noah would record a podcast on it. I&apos;d take the podcast,
+            longer post. Then Noah would record a podcast on it. We&apos;d take the podcast,
             transcribe it, and write the transcript into the newsletter. The newsletter became a
             Twitter thread. The thread became a LinkedIn post.
           </p>
@@ -178,7 +178,7 @@ export default function NoahKaganCaseStudy() {
         </CaseStudyArticle>
 
         <div className="pb-20">
-          <CaseStudyClosing prompt="If you'd like me to help you design a content multiplication system that drives qualified leads, you can book a call with me here." />
+          <CaseStudyClosing prompt="If you'd like us to help you design a content multiplication system that drives qualified leads, you can book a call here." />
         </div>
       </main>
       <Footer />

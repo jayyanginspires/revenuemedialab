@@ -12,7 +12,7 @@ import {
 import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: `How I helped break a Guinness World Record book launch — ${SITE.name}`,
+  title: `How we helped break a Guinness World Record book launch — ${SITE.name}`,
   description:
     "Writing ad copy for the launch of Alex Hormozi's $100M Money Models: the 6Ps, optimising for AOV over CPL, battle-testing hooks, and kaleidoscoping winners.",
 };
@@ -23,10 +23,10 @@ export default function AlexHormoziCaseStudy() {
       <Header />
       <main className="bg-white">
         <CaseStudyHero
-          headline="How I Helped Break a Guinness World Record Book Launch"
+          headline="How We Helped Break a Guinness World Record Book Launch"
           dek={
             <>
-              I wrote ad copy for the launch of Alex Hormozi&rsquo;s <em>$100M Money Models</em>.
+              We wrote ad copy for the launch of Alex Hormozi&rsquo;s <em>$100M Money Models</em>.
             </>
           }
           stats={[
@@ -50,11 +50,11 @@ export default function AlexHormoziCaseStudy() {
             Copywriting was never about the writing. It&rsquo;s about the thinking behind the words.
           </p>
           <p>
-            Identity callouts, outcome hooks, promise hooks, those all work until you&rsquo;re stuck
-            repeating them, because you don&rsquo;t know why they land.
+            Identity callouts, outcome hooks, promise hooks — they all work. But if you don&rsquo;t
+            know why they work, all you can do is repeat them until they stop.
           </p>
           <p>
-            Before I write a line I answer 6 questions about the offer. I call them the 6Ps.
+            Before we write a line we answer 6 questions about the offer. We call them the 6Ps.
           </p>
           <p>
             <strong>People.</strong> Who is this for? You can&rsquo;t answer &ldquo;why should they
@@ -63,8 +63,8 @@ export default function AlexHormoziCaseStudy() {
             broken in their business. Some had never heard of Alex. We had to write for both.
           </p>
           <p>
-            <strong>Positioning.</strong> How your product is perceived in the consumer&rsquo;s
-            mind. A money model was a category with no name on it yet, and one hook said it
+            <strong>Positioning.</strong> Where your product already sits in your buyer&rsquo;s
+            head. A money model was a category with no name on it yet, and one hook said it
             outright: &ldquo;Honest question, when&rsquo;s the first time you ever heard of a money
             model? That&rsquo;s because it&rsquo;s never been talked about before.&rdquo; If the
             category is new, there&rsquo;s nothing to compare you to.
@@ -104,7 +104,7 @@ export default function AlexHormoziCaseStudy() {
             rewards whichever ad is best at getting an email out of anybody.
           </p>
           <p>
-            The same creative went into two campaigns, one optimized for registrations and one for
+            We ran the same creative in two campaigns, one optimized for registrations and one for
             purchases. Registrations came back at $5 from the first and $17 from the second, because
             the platform was hunting buyers instead of people who sign up for free stuff.
           </p>
@@ -122,12 +122,15 @@ export default function AlexHormoziCaseStudy() {
             Ours was pre-order the book, then a roughly $300 order for 15 copies that unlocked two
             of Alex&rsquo;s internal handbooks.
           </p>
-          <p>The offer sets your budget for a hook long before you write one.</p>
+          <p>
+            What you sell decides how much you can afford to pay for a lead. That&rsquo;s settled
+            long before anyone writes a hook.
+          </p>
 
           <ArticleH2>Battle test your hooks</ArticleH2>
           <p>
-            I don&rsquo;t write test candidates from nothing. I go find material that has already
-            performed somewhere. Most of ours came from Alex&rsquo;s tweets, because a post that did
+            Instead of writing ads from scratch, we went looking for material that was already
+            validated somewhere else. Most of ours came from Alex&rsquo;s tweets, because a post that did
             numbers already passed a test on the audience we were about to pay to reach. The rest
             came from $100M Leads 2 years earlier, from old Gym Launch and Skool ads, from excerpts
             off the pages of the book, and from a sales letter he&rsquo;d mailed to his list that we
@@ -141,12 +144,14 @@ export default function AlexHormoziCaseStudy() {
           </p>
           <p>
             The test can only pick from what you give it. When you buy broad, the people seeing your
-            ad range from never having heard of Alex to owning both his books, so I wrote hooks in
+            ad range from never having heard of Alex to owning both his books, so we wrote hooks in
             buckets and kept all of them live.
           </p>
 
           <ArticleH3>Secret</ArticleH3>
-          <p>For someone who has no idea who he is and needs a reason to stop.</p>
+          <p>
+            For someone who has no idea who Alex is and needs a reason to stop scrolling.
+          </p>
           <Callout>
             There&rsquo;s a reason I&rsquo;ve never talked about this publicly before&hellip;
             <br />
@@ -162,7 +167,7 @@ export default function AlexHormoziCaseStudy() {
           </Callout>
 
           <ArticleH3>Question</ArticleH3>
-          <p>Pattern interrupt, for the scroll.</p>
+          <p>A pattern interrupt, aimed at someone scrolling past on autopilot.</p>
           <Callout>
             Well this is awkward&hellip; I don&rsquo;t see your email on my list.
             <br />
@@ -180,7 +185,9 @@ export default function AlexHormoziCaseStudy() {
           </Callout>
 
           <ArticleH3>Outcome</ArticleH3>
-          <p>For someone ready to move.</p>
+          <p>
+            For someone who already knows Alex and just needs the payoff stated plainly.
+          </p>
           <Callout>
             You can grow as big as you want, without raising a dime, if you get this one thing
             right.
@@ -214,14 +221,13 @@ export default function AlexHormoziCaseStudy() {
 
           <ArticleH2>Kaleidoscope every winner</ArticleH2>
           <p>
-            Kaleidoscoping is when you take an ad that already won, break it into its parts, and
-            rebuild it over and over by changing a single part each time. The parts you can move:
-            hook, body, CTA, prop, camera, who says it.
+            Kaleidoscoping means taking an ad that already won, breaking it into its parts, and
+            rebuilding it one change at a time. The parts you can move: hook, body, CTA, prop,
+            camera, who says it.
           </p>
           <p>
-            Everything you didn&rsquo;t change stays where it was. When a version beats the original
-            you know which change did it, and you can make 10 more of that change instead of
-            guessing.
+            Because everything else stays fixed, a version that beats the original tells you
+            exactly which change did it. Then you make 10 more of that change instead of guessing.
           </p>
 
           <ArticleH3>Change the prop, keep the line</ArticleH3>
@@ -246,7 +252,7 @@ export default function AlexHormoziCaseStudy() {
 
           <ArticleH3>Change the line, keep the prop</ArticleH3>
           <p>
-            &ldquo;Quick question, what&rsquo;s your email address?&rdquo; won early, so I rewrote
+            &ldquo;Quick question, what&rsquo;s your email address?&rdquo; won early, so we rewrote
             it a dozen ways before we touched anything else:
           </p>
           <Callout>
@@ -295,8 +301,9 @@ export default function AlexHormoziCaseStudy() {
 
           <ArticleH3>Swap the first line, keep the body</ArticleH3>
           <p>
-            The hook goes to the full audience the ad reaches. Only the people it convinced get to
-            the body, so it wears out slower and it&rsquo;s worth keeping.
+            Everyone the ad reaches sees the hook, but only the people it convinced ever reach the
+            body. So the body burns out far slower than the hook, which makes it the part worth
+            keeping when you swap the opening line.
           </p>
           <Callout>
             &ldquo;You should learn how to have an active income before you&rsquo;re trying to learn
@@ -330,7 +337,7 @@ export default function AlexHormoziCaseStudy() {
             $100,000 is a b*tch, but you got to do it.&rsquo;&rdquo;
           </Callout>
           <p>
-            Same body under both. I pulled Alex out as the source and put Charlie Munger in his
+            Same body under both. We pulled Alex out as the source and put Charlie Munger in his
             place, so Alex is agreeing with him instead of telling you himself. That lands easier on
             someone who hasn&rsquo;t decided about Alex yet.
           </p>
@@ -343,20 +350,20 @@ export default function AlexHormoziCaseStudy() {
 
           <ArticleH3>Hand it to an editor</ArticleH3>
           <p>
-            An editor gets a dozen more out of a winner without anyone going back on camera, off
-            speed, captions, a headline over the top, a different crop.
+            An editor can pull a dozen more versions out of a winner without anyone going back on
+            camera: change the speed, add captions, put a headline over the top, re-crop it.
           </p>
 
           <ArticleH3>Change who says it</ArticleH3>
           <p>
-            I rewrote Alex&rsquo;s winning scripts in third person and we had Leila read them. In
+            We rewrote Alex&rsquo;s winning scripts in third person and had Leila read them. In
             one of them Alex had said &ldquo;I even had to delay it by an extra six months.&rdquo;
             We had Leila say &ldquo;we even had to delay it.&rdquo;
           </p>
         </CaseStudyArticle>
 
         <div className="pb-20">
-          <CaseStudyClosing prompt="If you'd like me to help you build the ad system behind a launch like this, you can book a call with me here." />
+          <CaseStudyClosing prompt="If you'd like us to help you build the ad system behind a launch like this, you can book a call here." />
         </div>
       </main>
       <Footer />
