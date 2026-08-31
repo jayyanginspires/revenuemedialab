@@ -495,7 +495,7 @@ export default function MarketingMiniCourse() {
             demand.
           </p>
           <p>This is how you win in marketing in 2027 and beyond.</p>
-          <WorkbookCapture heading="Take the workbook with you" />
+          <WorkbookCapture />
         </CaseStudyArticle>
 
         <div className="pb-20">

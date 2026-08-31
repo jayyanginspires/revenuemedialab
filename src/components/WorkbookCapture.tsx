@@ -35,11 +35,10 @@ export function WorkbookCapture({ heading }: { heading?: string }) {
     <div className="my-10 rounded-2xl border border-accent/30 bg-background-pale p-7">
       <p className="eyebrow text-accent-dark">Free workbook</p>
       <h3 className="mt-2 text-xl font-extrabold tracking-tight text-foreground">
-        {heading ?? "Get the workbook that goes with this"}
+        {heading ?? "Want to apply this to your business?"}
       </h3>
       <p className="mt-2 leading-relaxed text-muted">
-        Every framework here as a fill-in workbook. The triple test, power/trust/likeness, your
-        content ladder, the empathy map, and a plan you can run this month.
+        Download the free fill-in-able workbook that maps to this mini course.
       </p>
 
       <form onSubmit={onSubmit} className="mt-5">
@@ -62,13 +61,15 @@ export function WorkbookCapture({ heading }: { heading?: string }) {
             className="w-full flex-1 rounded-lg border border-border bg-paper px-3.5 py-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent"
           />
           <Button type="submit" disabled={sending} className="!py-3 shrink-0">
-            {sending ? "Sending…" : "Send it to me"}
+            {sending ? "Sending…" : "Send me the workbook"}
             {!sending && <ArrowUpRightIcon className="h-4 w-4" />}
           </Button>
         </div>
         {error && <p className="mt-3 text-sm text-[#B4231F]">{error}</p>}
-        <p className="mt-3 text-xs text-muted">
-          You&rsquo;ll also get the newsletter. Unsubscribe whenever.
+        <p className="mt-3 text-xs leading-relaxed text-muted">
+          When you submit your email, you&rsquo;ll also be signed up for my free weekly email where
+          I share insights on strategy &amp; marketing. Don&rsquo;t worry, you can unsubscribe at
+          any time. We&rsquo;ll still be friends, I promise :)
         </p>
       </form>
     </div>
