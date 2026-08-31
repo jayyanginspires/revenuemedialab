@@ -51,7 +51,7 @@ export default function AlexHormoziCaseStudy() {
           <p>We filmed over 1,500 pieces of creative and ran over 2,600 ads.</p>
           <p>Here&rsquo;s how:</p>
 
-          <ArticleH2>Answer 6 questions before you write</ArticleH2>
+          <ArticleH2>Use the 6Ps</ArticleH2>
           <p>
             Copywriting was never about the writing. It&rsquo;s about the thinking behind the words.
           </p>
@@ -220,7 +220,7 @@ export default function AlexHormoziCaseStudy() {
           </ul>
           <p>Almost none of them mention the book.</p>
 
-          <ArticleH2>Kaleidoscope every winner</ArticleH2>
+          <ArticleH2>Kaleidoscope your winners</ArticleH2>
           <p>
             Kaleidoscoping means taking an ad that already won, breaking it into its parts, and
             rebuilding it one change at a time. The parts you can move: hook, body, CTA, prop,
@@ -362,6 +362,25 @@ export default function AlexHormoziCaseStudy() {
             one of them Alex had said &ldquo;I even had to delay it by an extra six months.&rdquo;
             We had Leila say &ldquo;we even had to delay it.&rdquo;
           </p>
+          <ArticleH2>The four moves</ArticleH2>
+          <ol>
+            <li>
+              <strong>Use the 6Ps.</strong> Answer People, Positioning, Promise, Proof, Priority
+              and Process before you write a line.
+            </li>
+            <li>
+              <strong>Optimize for AOV, not CPL.</strong> Tell the platform to chase buyers and it
+              will go find you buyers.
+            </li>
+            <li>
+              <strong>Battle test your hooks.</strong> Start from material that already worked, run
+              one ad per ad set, and write across every level of awareness.
+            </li>
+            <li>
+              <strong>Kaleidoscope your winners.</strong> Change one part at a time so you always
+              know which change did it.
+            </li>
+          </ol>
         </CaseStudyArticle>
 
         <div className="pb-20">
