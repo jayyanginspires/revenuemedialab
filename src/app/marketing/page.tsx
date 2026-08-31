@@ -11,6 +11,7 @@ import {
   TableOfContents,
   TryThis,
 } from "@/components/CaseStudyLayout";
+import { WorkbookCapture } from "@/components/WorkbookCapture";
 import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -253,6 +254,8 @@ export default function MarketingMiniCourse() {
             fun, can do it for longer, and build a more durable brand.
           </p>
 
+          <WorkbookCapture />
+
           <ArticleH2 id="why-brand-matters">Why brand matters</ArticleH2>
           <p>
             We all know a business survives because of one equation: LTV to CAC. Basically, how much
@@ -492,6 +495,7 @@ export default function MarketingMiniCourse() {
             demand.
           </p>
           <p>This is how you win in marketing in 2027 and beyond.</p>
+          <WorkbookCapture heading="Take the workbook with you" />
         </CaseStudyArticle>
 
         <div className="pb-20">

@@ -11,9 +11,17 @@ export function Header() {
           <LogoMark className="h-8 w-auto" />
           <Wordmark className="text-[15px] sm:text-lg" />
         </Link>
-        <LinkButton href="/#apply" className="!px-5 !py-2.5 text-[14px] sm:text-[15px]">
-          {SITE.qualifyCta}
-        </LinkButton>
+        <div className="flex items-center gap-5">
+          <Link
+            href="/marketing"
+            className="hidden text-[15px] font-semibold text-muted transition-colors hover:text-accent sm:block"
+          >
+            Free mini course
+          </Link>
+          <LinkButton href="/#apply" className="!px-5 !py-2.5 text-[14px] sm:text-[15px]">
+            {SITE.qualifyCta}
+          </LinkButton>
+        </div>
       </div>
     </header>
   );
