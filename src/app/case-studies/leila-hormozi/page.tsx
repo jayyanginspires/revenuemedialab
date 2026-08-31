@@ -26,8 +26,8 @@ export default function LeilaHormoziCaseStudy() {
           headline="How We Built the Written Engine at Acquisition.com"
           dek={
             <>
-              We owned the written layer at Acquisition.com &mdash; Leila Hormozi&rsquo;s tweets and
-              threads, and the accessory written platforms across both brands.
+              We owned the written layer at Acquisition.com. Leila Hormozi&rsquo;s tweets and
+              threads, plus the accessory written platforms across both brands.
             </>
           }
           stats={[
@@ -45,12 +45,9 @@ export default function LeilaHormoziCaseStudy() {
 
         <CaseStudyArticle>
           <p>
-            Everyone treats writing like it sits next to editing and design. It sits before them.
-          </p>
-          <p>
-            An editor makes an idea land better. A designer makes it look better. Neither decides
-            what the idea is. That happens in a doc, in a sentence, before anyone opens a timeline.
-            So if the writing is vague, everything downstream is expensive and vague.
+            Writing is not a parallel function to editing or design. It sits upstream. Editing and
+            design refine the idea. Writing defines it. Every ad, carousel, reel, email and script
+            begins as written thought.
           </p>
 
           <ArticleH2>What we owned</ArticleH2>
@@ -71,71 +68,54 @@ export default function LeilaHormoziCaseStudy() {
             </li>
           </ul>
           <p>
-            At that volume you can&rsquo;t rely on taste. Taste has bad days. So we wrote everything
-            down in a playbook, <em>The Art of the Tweet</em>, and taught it to the team. 75+
-            frameworks. Here&rsquo;s the part that matters.
-          </p>
-
-          <ArticleH2>Nobody writes for the small platforms</ArticleH2>
-          <p>
-            Threads and the YouTube Community tab get whatever already ran on Instagram. Then people
-            look at the numbers and decide those platforms don&rsquo;t work.
-          </p>
-          <p>
-            They work. Nobody writes for them. A Community post goes to people who already
-            subscribed, which makes it a warmer audience than any feed you can buy into. Threads
-            pays you for posting more, which X stopped doing a while ago.
-          </p>
-          <p>
-            Neither one needs a camera, an editor, or a budget. The cheapest platforms to write for
-            are the ones nobody staffs.
+            We wrote the playbook the team writes from, <em>The Art of the Tweet</em>. 75+
+            frameworks. Here are the parts that do the most work.
           </p>
 
           <ArticleH2>Write a premise, not a niche</ArticleH2>
           <p>
-            Everyone says pick a niche. A niche only answers who you help, and it puts you in a room
-            with everyone else who picked it. A premise answers what, how and why.
+            Conventional wisdom says pick a niche. A niche is saturated. A premise is memorable.
           </p>
           <Callout>
-            <strong>Niche:</strong> &ldquo;I help entrepreneurs.&rdquo;
+            <strong>Niche:</strong> &ldquo;I help entrepreneurs.&rdquo; That&rsquo;s WHO.
             <br />
             <br />
             <strong>Premise:</strong> &ldquo;I show entrepreneurs how to build a brand without
-            selling their soul to the algorithm.&rdquo;
+            selling their soul to the algorithm.&rdquo; That&rsquo;s WHAT, HOW and WHY.
           </Callout>
           <p>
-            If someone can&rsquo;t explain what you&rsquo;re about in one sentence after meeting
-            you, you don&rsquo;t have one yet. James Clear is the Atomic Habits guy. Ryan Holiday is
-            ancient stoicism for modern times. Pick your sentence or the internet picks it for you.
+            People will ask, &ldquo;what&rsquo;s this person about?&rdquo; If you aren&rsquo;t
+            intentional about what you want them to say, you build a brand by default instead of by
+            design. James Clear is the Atomic Habits guy. Ryan Holiday is ancient stoicism for
+            modern times.
           </p>
-          <p>We check a premise three ways:</p>
+          <p>Three checks on a premise:</p>
           <ul>
             <li>
-              <strong>Legible.</strong> Your grandmother gets it. &ldquo;I optimize human
-              performance&rdquo; fails. &ldquo;I help executives sleep better&rdquo; passes.
+              <strong>Legible.</strong> Grandma can understand it. &ldquo;I optimize human
+              performance&rdquo; is weak. &ldquo;I help executives sleep better&rdquo; is strong.
             </li>
             <li>
-              <strong>Compelling.</strong> Someone wants it. &ldquo;I teach marketing&rdquo; fails.
-              &ldquo;I show how to get customers without ads&rdquo; passes.
+              <strong>Compelling.</strong> It creates desire. &ldquo;I teach marketing&rdquo; is
+              weak. &ldquo;I show how to get customers without ads&rdquo; is strong.
             </li>
             <li>
-              <strong>Differentiated.</strong> Only you can say it. &ldquo;I help people lose
-              weight&rdquo; fails. &ldquo;I help busy dads over 45 lose 30lbs without giving up
-              beer&rdquo; passes.
+              <strong>Differentiated.</strong> Only you can claim it. &ldquo;I help people lose
+              weight&rdquo; is weak. &ldquo;I help busy dads over 45 lose 30lbs without giving up
+              beer&rdquo; is strong.
             </li>
           </ul>
-          <p>Easy to summarize. Hard to compete with.</p>
+          <p>The goal is to be easy to summarize and hard to compete with.</p>
 
           <ArticleH2>Write values, not topics</ArticleH2>
           <p>
-            Topics run out. You cover a topic and then you&rsquo;ve covered it. Values don&rsquo;t
-            run out, because a value is a belief and you can argue a belief from a hundred angles
-            without repeating yourself.
+            The next thing people tell you is to pick your topics. Topics are too broad, and
+            they&rsquo;re impersonal. Values are the things that support your premise.
           </p>
           <p>Four questions get them out of someone:</p>
           <ol>
             <li>What&rsquo;s your personal quest?</li>
-            <li>What do you believe that most people don&rsquo;t?</li>
+            <li>What do you believe strongly that most people don&rsquo;t?</li>
             <li>What pisses you off?</li>
             <li>What hill are you willing to die on?</li>
           </ol>
@@ -148,27 +128,28 @@ export default function LeilaHormoziCaseStudy() {
             <li>Lead yourself first</li>
           </ul>
           <p>
-            Once those are set, nobody stares at a blank page. Every post is a new way into a belief
-            her audience already follows her for.
+            Values matter because they&rsquo;re magnets. They attract people who believe the same
+            things. They&rsquo;re also repeatable, which makes it easy to say the same thing a
+            thousand different ways.
           </p>
 
           <ArticleH2>Three questions before writing</ArticleH2>
           <p>
-            <strong>What am I trying to say?</strong> One idea per post. Two ideas and you can&rsquo;t
-            tell which one people responded to.
+            <strong>What am I trying to say?</strong> The best posts express one idea. If you
+            confuse, you lose. One idea also lets you tell whether that idea resonated.
           </p>
           <p>
-            <strong>Who is this for?</strong> That decides the hook, because you can only write to
-            someone&rsquo;s desire if you know whose desire it is.
+            <strong>Who is this for?</strong> This determines your hook. When you know who
+            you&rsquo;re writing to, you can reverse engineer what they want.
           </p>
           <p>
-            <strong>How do I make it stick?</strong> That&rsquo;s rhetoric.
+            <strong>How do I make it memorable?</strong> This is rhetoric.
           </p>
 
           <ArticleH3>Hooks</ArticleH3>
           <p>
-            A hook works when it attaches to something people already want. A hot take. A shortcut.
-            A lesson someone else paid for. We keep 50 formulas written down:
+            Hooks work because they play to what people already desire. Everyone loves hot takes,
+            life hacks and lessons. We keep 50 formulas written down:
           </p>
           <Callout>
             <strong>Harsh truth:</strong> You&rsquo;re gonna die. People will move on in weeks, not
@@ -185,8 +166,8 @@ export default function LeilaHormoziCaseStudy() {
 
           <ArticleH3>Rhetoric</ArticleH3>
           <p>
-            Same idea, different construction. The second one lands and the first one gets scrolled
-            past.
+            Rhetoric is the art of transferring information from one brain to another in the most
+            effective way possible. Same idea, better construction:
           </p>
           <Callout>
             &ldquo;Reading old books is important for your creativity&rdquo; becomes &ldquo;If you
@@ -201,78 +182,67 @@ export default function LeilaHormoziCaseStudy() {
             &ldquo;Fear leads to anger. Anger leads to hate. Hate leads to suffering.&rdquo;
           </Callout>
 
-          <ArticleH2>Make quality checkable</ArticleH2>
-          <p>
-            At 100+ posts a month you can&rsquo;t review by feel, because feel is slow and nobody
-            agrees. So the playbook is a checklist anyone on the team can apply:
-          </p>
+          <ArticleH2>Writing guidelines</ArticleH2>
+          <p>Every draft gets checked against these before it goes out:</p>
           <ul>
-            <li>Third-grade reading level</li>
-            <li>Active voice, present tense</li>
-            <li>No adverbs. An adverb usually means a weak verb</li>
-            <li>One comma a sentence. Two means cut the middle or split it</li>
-            <li>&ldquo;Keep going,&rdquo; not &ldquo;don&rsquo;t stop&rdquo;</li>
-            <li>Cut any word that doesn&rsquo;t change the meaning</li>
-            <li>Single-line paragraphs, no title case, emojis almost never</li>
+            <li>Keep everything below a third-grade reading level</li>
+            <li>Present voice</li>
+            <li>Active, not passive</li>
+            <li>Avoid adverbs. Adverbs usually mean lame verbs</li>
+            <li>Short sentences. Usually one comma. Two commas means cut the middle or split it</li>
+            <li>Positive language. &ldquo;Keep going,&rdquo; not &ldquo;don&rsquo;t stop&rdquo;</li>
+            <li>Remove redundant and unnecessary words</li>
+            <li>Single-line paragraphs, no title case, emojis sparingly</li>
           </ul>
 
           <ArticleH3>How writers get better fast</ArticleH3>
           <ol>
             <li>
-              <strong>Scroll.</strong> Read constantly. The best writers read more than they write.
+              <strong>Scroll.</strong> Get on X and read. The best writers are avid readers.
             </li>
             <li>
-              <strong>Study.</strong> Ask why you stopped scrolling.
+              <strong>Study.</strong> Why did you stop scrolling?
             </li>
             <li>
-              <strong>Save.</strong> Keep a file of the ones that stopped you.
+              <strong>Save.</strong> Build an inspiration library.
             </li>
             <li>
-              <strong>Scribe.</strong> Copy them by hand to feel the rhythm.
+              <strong>Scribe.</strong> Handcopy on paper to feel the rhythm and structure.
             </li>
             <li>
-              <strong>Steal.</strong> Rewrite twice. Same structure, new topic. Then same topic, new
-              structure.
+              <strong>Steal.</strong> Rewrite two ways. Same structure, different topic. Same topic,
+              different structure.
             </li>
           </ol>
           <Callout>
             <strong>Original:</strong> Rich people buy time. Poor people buy stuff.
             <br />
             <br />
-            <strong>Same structure, new topic:</strong> Winners get better. Losers get bitter.
+            <strong>Same structure, different topic:</strong> Winners get better. Losers get bitter.
             <br />
             <br />
-            <strong>Same topic, new structure:</strong> If you want to build wealth, buy time. If you
-            want to stay poor, buy stuff.
+            <strong>Same topic, different structure:</strong> If you want to build wealth, buy time.
+            If you want to stay poor, buy stuff.
           </Callout>
 
-          <ArticleH2>Write it so they never edit it</ArticleH2>
+          <ArticleH2>Voice replication at scale</ArticleH2>
           <p>
-            Sounding close to someone isn&rsquo;t the job. If they have to fix it, you&rsquo;ve made
-            work for the person you were hired to free up.
+            Capturing another person&rsquo;s voice across 100+ posts a month with near-zero
+            revisions is a specialized skill that&rsquo;s easy to underestimate. Leila published
+            directly from our drafts.
           </p>
           <p>
-            Leila posted our drafts as written. That&rsquo;s what gave back 6&ndash;10 hours of her
-            week, and those hours went into filming and strategy instead of writing tweets.
-          </p>
-
-          <ArticleH2>Own the boring decisions too</ArticleH2>
-          <p>
-            We picked the newsletter platform, wrote the launch plan, and moved scheduling from
-            Hootsuite to Buffer, which cut errors and cost at the same time.
-          </p>
-          <p>
-            That&rsquo;s not writing. But it decides whether the writing goes out on time, and
-            somebody owns it or nobody does.
+            That freed 6&ndash;10 hours of her week, which went back into filming, strategy and
+            creative direction.
           </p>
 
           <ArticleH2>TLDR:</ArticleH2>
           <ol>
-            <li>Writing comes before editing and design, not next to them</li>
-            <li>Write for the platforms nobody staffs</li>
+            <li>Writing sits upstream of editing and design</li>
             <li>Build on a premise, not a niche</li>
             <li>Write values, not topics</li>
-            <li>Write it so well they publish it untouched</li>
+            <li>One idea per post</li>
+            <li>Check every draft against the guidelines before it goes out</li>
           </ol>
         </CaseStudyArticle>
 
