@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="200" viewBox="0 0 260 200">
+
+
+<g transform="translate(87,8)">
+  <defs>
+    <clipPath id="s1"><rect x="2" y="8" width="22" height="76" rx="11"></rect></clipPath>
+    <clipPath id="s2"><rect x="32" y="8" width="22" height="76" rx="11"></rect></clipPath>
+    <clipPath id="s3"><rect x="62" y="8" width="22" height="76" rx="11"></rect></clipPath>
+  </defs>
+  <g clip-path="url(#s1)"><rect x="2" y="60" width="22" height="30" fill="#1F5B3F"></rect></g>
+  <g clip-path="url(#s2)"><rect x="32" y="46" width="22" height="44" fill="#1F5B3F"></rect></g>
+  <g clip-path="url(#s3)"><rect x="62" y="32" width="22" height="58" fill="#1F5B3F"></rect></g>
+  <rect x="2" y="8" width="22" height="76" rx="11" fill="none" stroke="#14392A" stroke-width="4"></rect>
+  <rect x="32" y="8" width="22" height="76" rx="11" fill="none" stroke="#14392A" stroke-width="4"></rect>
+  <rect x="62" y="8" width="22" height="76" rx="11" fill="none" stroke="#14392A" stroke-width="4"></rect>
+  <rect x="0" y="4" width="26" height="5" rx="2.5" fill="#14392A"></rect>
+  <rect x="30" y="4" width="26" height="5" rx="2.5" fill="#14392A"></rect>
+  <rect x="60" y="4" width="26" height="5" rx="2.5" fill="#14392A"></rect></g>
+<text class="wm" x="130" y="148" font-size="34" text-anchor="middle" letter-spacing="0.3" fill="#14392A">REVENUE</text>
+<text class="wm" x="130" y="182" font-size="34" text-anchor="middle" letter-spacing="0.3" fill="#14392A">MEDIA <tspan fill="#1F5B3F">LAB</tspan></text>
+</svg>
