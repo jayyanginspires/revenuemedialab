@@ -87,6 +87,16 @@ export const CASE_STUDIES = [
     },
   },
   {
+    slug: "leila-hormozi",
+    person: "Leila Hormozi",
+    brand: "Acquisition.com",
+    headline: "The written engine behind Acquisition.com",
+    image: {
+      src: "/images/leila-hormozi-card.jpg",
+      alt: "Leila Hormozi, co-founder of Acquisition.com.",
+    },
+  },
+  {
     slug: "shelby-sapp-ads",
     person: "Shelby Sapp",
     brand: "She Sells Academy",
