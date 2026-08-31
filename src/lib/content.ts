@@ -87,6 +87,16 @@ export const CASE_STUDIES = [
     },
   },
   {
+    slug: "shelby-sapp-ads",
+    person: "Shelby Sapp",
+    brand: "She Sells Academy",
+    headline: "8 figures in profit from Meta ads at 3–4x ROAS",
+    image: {
+      src: "/images/shelby-sapp-ads-card.jpg",
+      alt: "Shelby Sapp, founder of She Sells Academy.",
+    },
+  },
+  {
     slug: "shelby-sapp",
     person: "Shelby Sapp",
     brand: "SheSells Academy",
