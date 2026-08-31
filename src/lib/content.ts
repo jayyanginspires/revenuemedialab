@@ -88,13 +88,15 @@ export const CASE_STUDIES = [
   },
 ] as const;
 
-// The three brands featured as logo proof directly under the hero. Each
-// renders with its own bespoke mark in <ClientLogos> — see that component
-// for why each one looks the way it does (real logo vs. wordmark vs. photo).
+// The four people featured as proof directly under the hero. Each renders
+// identically in <ClientLogos>: profile photo, name, brand. A previous
+// version mixed a wordmark, a logo file and a photo, which never read as a
+// set no matter how it was aligned.
 export const CLIENT_LOGOS = [
-  { person: "Shelby Sapp", brand: "She Sells" },
-  { person: "Alex Hormozi", secondPerson: "Leila Hormozi", brand: "Acquisition.com" },
-  { person: "Noah Kagan", brand: "AppSumo" },
+  { person: "Shelby Sapp", brand: "She Sells", photo: "/logos/shelby-sapp.jpg" },
+  { person: "Alex Hormozi", brand: "Acquisition.com", photo: "/logos/alex-hormozi.jpg" },
+  { person: "Leila Hormozi", brand: "Acquisition.com", photo: "/logos/leila-hormozi.jpg" },
+  { person: "Noah Kagan", brand: "AppSumo", photo: "/logos/noah-kagan.jpg" },
 ] as const;
 
 export const WHO_FOR = {
