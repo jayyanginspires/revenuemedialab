@@ -25,8 +25,8 @@ export const HEADLINE_OPTIONS = [
 export const HERO = {
   eyebrowScript: "We help founders",
   headlineTop: "Scale With",
-  headlineAccent: "Organic Content",
-  headline: "We help founders scale with organic content",
+  headlineAccent: "Written Media",
+  headline: "We help founders scale with written media",
   badge: "Installed inside 8 & 9-figure brands",
   // "Revenue Media Systems" renders bold — see the split in Hero.tsx.
   subheadline:

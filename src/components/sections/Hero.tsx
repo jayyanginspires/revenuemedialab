@@ -32,13 +32,12 @@ export function Hero() {
           {HERO.badge}
         </span>
 
-        <p className="script-line -rotate-2 text-3xl sm:text-4xl md:text-[2.6rem]">
+        <h1 className="hero-headline text-foreground">
           {HERO.eyebrowScript}
-        </p>
-        <h1 className="hero-headline mt-6 text-foreground md:mt-7">
+          <br />
           {HERO.headlineTop}
           <br />
-          <span className="text-accent">{HERO.headlineAccent}</span>
+          <span className="hero-script-accent -rotate-1 text-accent">{HERO.headlineAccent}</span>
         </h1>
 
         <div className="font-mono mx-auto mt-10 max-w-xl rounded-2xl border border-border bg-paper px-7 py-6 text-[14px] leading-relaxed text-muted shadow-[0_1px_0_rgba(18,24,26,0.04),0_12px_28px_-14px_rgba(18,24,26,0.15)]">

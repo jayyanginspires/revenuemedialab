@@ -100,6 +100,18 @@ body {
   text-wrap: balance;
 }
 
+/* The former eyebrow script now does the opposite job: it's the big,
+   bold flourish word inside the headline, so it needs its own (larger)
+   size and normal casing — Caveat reads oddly in all-caps. */
+.hero-script-accent {
+  display: inline-block;
+  font-family: var(--font-script);
+  font-weight: 700;
+  text-transform: none;
+  font-size: clamp(3.75rem, 7vw + 1.75rem, 9rem);
+  line-height: 0.95;
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.75rem;

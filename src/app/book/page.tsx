@@ -23,7 +23,7 @@ export default function BookPage() {
           }
         >
           <div className="flex items-center gap-2.5">
-            <LogoMark className="h-7 w-auto" />
+            <LogoMark className="h-6 w-auto" />
             <Wordmark className="text-[15px] sm:text-lg" />
           </div>
           <h1 className="h2-display mt-8 text-dark-ink">Step 2: Schedule Your Call</h1>

@@ -8,7 +8,7 @@ export function Header({ showCta = true }: { showCta?: boolean }) {
     <header className="border-b border-border bg-paper">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2.5">
-          <LogoMark className="h-8 w-auto" />
+          <LogoMark className="h-6 w-auto" />
           <Wordmark className="text-[15px] sm:text-lg" />
         </Link>
         {showCta && (
