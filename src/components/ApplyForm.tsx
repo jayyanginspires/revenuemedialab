@@ -1,11 +1,13 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { preconnect, preload } from "react-dom";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/Button";
+import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { ChevronDownIcon } from "@/components/Icons";
 import { COUNTRY_CODES } from "@/lib/countryCodes";
+import { BOOKING } from "@/lib/content";
 import { buildQueryString, readClientUtmCookie, withPersistedUtm } from "@/lib/utm";
 
 const REVENUE_OPTIONS = [
@@ -129,6 +131,8 @@ const REVENUE_NOT_QUALIFYING = new Set(["under_10k"]);
 export function ApplyForm() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [stage, setStage] = useState<"form" | "calendly">("form");
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -140,16 +144,25 @@ export function ApplyForm() {
   const [bottleneckOther, setBottleneckOther] = useState("");
 
   // Warm up everything the next step needs *before* the visitor submits, so
-  // the /book transition and the Calendly embed are ready the instant they
-  // land instead of racing the webhook and Calendly's own asset fetches.
+  // the Calendly embed is ready to swap in instantly instead of racing the
+  // webhook and Calendly's own asset fetches.
   useEffect(() => {
-    router.prefetch(withPersistedUtm("/book"));
     router.prefetch(withPersistedUtm("/apply/declined"));
+    router.prefetch(withPersistedUtm("/book/thank-you"));
     preconnect("https://calendly.com");
     preconnect("https://assets.calendly.com");
     preload("https://assets.calendly.com/assets/external/widget.js", { as: "script" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Bring the swapped-in Calendly embed into view — the visitor may have
+  // scrolled while filling out the form, so the button they just pressed
+  // isn't necessarily where the calendar appears.
+  useEffect(() => {
+    if (stage === "calendly") {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [stage]);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -180,12 +193,32 @@ export function ApplyForm() {
       body: JSON.stringify(payload),
     }).catch((err) => console.error("Failed to submit application", err));
 
-    const destination = REVENUE_NOT_QUALIFYING.has(monthlyRevenue) ? "/apply/declined" : "/book";
-    router.push(withPersistedUtm(destination));
+    if (REVENUE_NOT_QUALIFYING.has(monthlyRevenue)) {
+      router.push(withPersistedUtm("/apply/declined"));
+      return;
+    }
+
+    // Qualifying applicants stay on this page — the form is swapped for the
+    // Calendly embed in place, and CalendlyEmbed itself handles navigating
+    // to /book/thank-you once they actually book a time.
+    setStage("calendly");
+  }
+
+  if (stage === "calendly") {
+    return (
+      <div ref={sectionRef} className="scroll-mt-6">
+        <h2 className="h2-display mb-6 text-center text-2xl text-accent md:text-3xl">
+          Step 2: Schedule Your Call
+        </h2>
+        <CalendlyEmbed calendlyUrl={BOOKING.calendlyUrl} />
+      </div>
+    );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <div ref={sectionRef} className="scroll-mt-6">
+      <h2 className="h2-display mb-6 text-center text-2xl text-accent md:text-3xl">Step 1: Apply</h2>
+      <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid gap-2.5 sm:grid-cols-2">
         <div className="sm:col-span-2">
           <input
@@ -291,6 +324,7 @@ export function ApplyForm() {
           {submitting ? "Submitting…" : "Submit application"}
         </Button>
       </div>
-    </form>
+      </form>
+    </div>
   );
 }

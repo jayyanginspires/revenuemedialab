@@ -60,9 +60,17 @@ export function Callout({ children }: { children: ReactNode }) {
   );
 }
 
-export function ArticleH2({ children, id }: { children: ReactNode; id?: string }) {
+export function ArticleH2({
+  children,
+  id,
+  className = "mt-10",
+}: {
+  children: ReactNode;
+  id?: string;
+  className?: string;
+}) {
   return (
-    <h2 id={id} className="h3-display mt-10 scroll-mt-24 text-foreground">
+    <h2 id={id} className={`h3-display scroll-mt-24 text-foreground ${className}`}>
       {children}
     </h2>
   );
@@ -133,9 +141,17 @@ export function CaseStudyClosing({ prompt }: { prompt: string }) {
   );
 }
 
-export function CaseStudyArticle({ children }: { children: ReactNode }) {
+export function CaseStudyArticle({
+  children,
+  className = "mx-auto max-w-2xl px-6 py-16",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <article className="mx-auto max-w-2xl px-6 py-16 leading-relaxed text-foreground [&_p]:mt-5 [&_p:first-child]:mt-0 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_ol]:mt-4 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5">
+    <article
+      className={`${className} leading-relaxed text-foreground [&_p]:mt-5 [&_p:first-child]:mt-0 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_ol]:mt-4 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5`}
+    >
       {children}
     </article>
   );
