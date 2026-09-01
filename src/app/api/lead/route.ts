@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { UTM_COOKIE_NAME, parseUtmFromSearchParams, safeParseUtmCookie } from "@/lib/utm";
 
 export async function POST(request: NextRequest) {
@@ -26,21 +26,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, forwarded: false });
   }
 
-  try {
-    const webhookResponse = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+  // Respond immediately — the visitor is waiting on this to move to /book.
+  // The actual forward happens after the response is sent; `after` keeps the
+  // serverless invocation alive until it settles, so it isn't cut off.
+  after(async () => {
+    try {
+      const webhookResponse = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    if (!webhookResponse.ok) {
-      console.error("Webhook responded with a non-2xx status", webhookResponse.status);
+      if (!webhookResponse.ok) {
+        console.error("Webhook responded with a non-2xx status", webhookResponse.status);
+      }
+    } catch (err) {
+      console.error("Failed to forward lead to webhook", err);
     }
-  } catch (err) {
-    console.error("Failed to forward lead to webhook", err);
-  }
+  });
 
-  // Always resolve 200 for the client — a webhook outage shouldn't block the
-  // visitor from continuing through the funnel to /book or /apply/declined.
   return NextResponse.json({ ok: true, forwarded: true });
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { preconnect } from "react-dom";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { PlaceholderFlag } from "@/components/PlaceholderFlag";
@@ -10,6 +11,11 @@ import { isPlaceholder } from "@/lib/content";
 export function CalendlyEmbed({ calendlyUrl }: { calendlyUrl: string }) {
   const router = useRouter();
   const configured = !isPlaceholder(calendlyUrl);
+
+  // Covers a direct/bookmarked visit to /book that skipped the apply form's
+  // own warmup. Cheap and deduped if it already ran there.
+  preconnect("https://calendly.com");
+  preconnect("https://assets.calendly.com");
 
   useEffect(() => {
     if (!configured) return;
@@ -44,7 +50,7 @@ export function CalendlyEmbed({ calendlyUrl }: { calendlyUrl: string }) {
 
   return (
     <>
-      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
       <div
         className="calendly-inline-widget"
         data-url={calendlyUrl}

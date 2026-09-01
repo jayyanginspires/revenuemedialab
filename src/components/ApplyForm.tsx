@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { preconnect, preload } from "react-dom";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/Button";
 import { ChevronDownIcon } from "@/components/Icons";
@@ -138,7 +139,19 @@ export function ApplyForm() {
   const [bottleneck, setBottleneck] = useState("");
   const [bottleneckOther, setBottleneckOther] = useState("");
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  // Warm up everything the next step needs *before* the visitor submits, so
+  // the /book transition and the Calendly embed are ready the instant they
+  // land instead of racing the webhook and Calendly's own asset fetches.
+  useEffect(() => {
+    router.prefetch(withPersistedUtm("/book"));
+    router.prefetch(withPersistedUtm("/apply/declined"));
+    preconnect("https://calendly.com");
+    preconnect("https://assets.calendly.com");
+    preload("https://assets.calendly.com/assets/external/widget.js", { as: "script" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
 
@@ -158,15 +171,14 @@ export function ApplyForm() {
 
     const qs = buildQueryString(readClientUtmCookie());
 
-    try {
-      await fetch(`/api/lead${qs ? `?${qs}` : ""}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-    } catch (err) {
-      console.error("Failed to submit application", err);
-    }
+    // Fire-and-forget: the lead still reaches Zapier (the route handler
+    // keeps running after it responds), but the visitor shouldn't sit on a
+    // network round trip before seeing their next step.
+    fetch(`/api/lead${qs ? `?${qs}` : ""}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch((err) => console.error("Failed to submit application", err));
 
     const destination = REVENUE_NOT_QUALIFYING.has(monthlyRevenue) ? "/apply/declined" : "/book";
     router.push(withPersistedUtm(destination));
