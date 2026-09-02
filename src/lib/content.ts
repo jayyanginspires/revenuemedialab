@@ -173,7 +173,7 @@ export const DISCLAIMER = `Results referenced on this page, where present, are s
 export const BOOKING = {
   calendlyUrl:
     process.env.NEXT_PUBLIC_CALENDLY_URL ||
-    "https://calendly.com/xavier-revenuemedialab/brand-audit-w-revenue-media-lab?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=1f8f5c",
+    "https://calendly.com/jay-revenuemedialab/brand-audit?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=468d60",
 };
 
 export function isPlaceholder(value: string): boolean {
