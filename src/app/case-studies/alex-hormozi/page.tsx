@@ -54,25 +54,22 @@ export default function AlexHormoziCaseStudy() {
             Copywriting was never about the writing. It&rsquo;s about the thinking behind the words.
           </p>
           <p>
-            Identity callouts, outcome hooks, promise hooks — they all work. But if you don&rsquo;t
-            know why they work, all you can do is repeat them. Instead, I want to teach you how to
-            fish.
+            Identity callouts, outcome hooks, promise hooks &mdash; they all work. But if you
+            don&rsquo;t know why they work, all you can do is repeat them. Instead, I want to teach
+            you how to fish.
           </p>
-          <p>
-            Before we write a line we answer 6 questions about the offer. We call them the 6Ps.
-          </p>
+          <p>Before we write copy, we first write down our answers to the 6Ps.</p>
           <p>
             <strong>People.</strong> Who is this for? You can&rsquo;t answer &ldquo;why should they
             choose us&rdquo; until you answer &ldquo;who is they.&rdquo; Here it was business
-            owners, and a much wider range than you&rsquo;d think. Some could already name what was
-            broken in their business. Some had never heard of Alex. We had to write for both.
+            owners, and a much wider range than you&rsquo;d think. Some could already identify what
+            was broken in their business. Some had never heard of Alex. We had to write for both.
           </p>
           <p>
             <strong>Positioning.</strong> Where your product already sits in your buyer&rsquo;s
-            head. A money model was a category with no name on it yet, and one hook said it
-            outright: &ldquo;Honest question, when&rsquo;s the first time you ever heard of a money
-            model? That&rsquo;s because it&rsquo;s never been talked about before.&rdquo; If the
-            category is new, there&rsquo;s nothing to compare you to.
+            head. A money model was a concept that no one understood yet, we made sure our hooks
+            addressed that: &ldquo;Honest question, when&rsquo;s the first time you ever heard of a
+            money model? That&rsquo;s because it&rsquo;s never been talked about before.&rdquo;
           </p>
           <p>
             <strong>Promise.</strong> Where you&rsquo;re helping them get to. Steve Jobs
@@ -82,21 +79,21 @@ export default function AlexHormoziCaseStudy() {
             &ldquo;you can scale as fast as you want without raising any money at all.&rdquo;
           </p>
           <p>
-            <strong>Proof.</strong> Why they should believe you. Trust is belief with evidence. Belief
-            without evidence is faith. He runs a $250M portfolio, he sold two thirds of his
-            last company for $46.2M, and over a million people bought his last two books. If you
-            were deaf and mute and could only point at what&rsquo;s in the room, you could point at
-            all three.
+            <strong>Proof.</strong> Why they should believe you. Trust is belief with evidence.
+            Belief without evidence is faith. Alex runs a $250M portfolio, he sold two thirds of his
+            last company for $46.2M, and over a million people bought his last two books. The deaf
+            and mute test: if you were deaf and mute and could only point to what&rsquo;s in the
+            room, what proof could you point to?
           </p>
           <p>
             <strong>Priority.</strong> Why now instead of later. We jog toward pleasure, we sprint
-            from pain. The event ran live once with no replays, and the bonuses died when it
+            from pain. The event ran live once with no replays, and the bonuses disappeared when it
             started.
           </p>
           <p>
-            <strong>Process.</strong> How it works, and why the other ways don&rsquo;t. A money
-            model is a sequence of offers that compound. The instinct is to grow by adding
-            customers. You grow by getting more out of the ones you already have.
+            <strong>Process.</strong> How it works, and why the other ways don&rsquo;t. &ldquo;A
+            money model is a sequence of offers that compound. The instinct is to grow by adding
+            customers. You grow by getting more out of the ones you already have.&rdquo;
           </p>
           <p>
             Once you&rsquo;ve answered those 6, you should feel like you have too much to say. Then
@@ -106,55 +103,35 @@ export default function AlexHormoziCaseStudy() {
           <ArticleH2>Optimize for AOV, not CPL</ArticleH2>
           <p>
             Most people optimize for cost per lead because it&rsquo;s the first number that comes
-            back. But it rewards whichever ad is best at pulling an email out of anybody, whether
-            or not that person would ever buy.
+            back. But if you optimize for lowest CPL, Meta will cater toward the people who are
+            easiest to get their email, not necessarily the ones who will buy your product.
           </p>
           <p>
             We ran the same creative in two campaigns, one optimized for registrations and one for
-            purchases. Registrations came back at $5 from the first and $17 from the second, because
-            the platform was hunting buyers instead of people who sign up for free stuff.
+            purchases. Registrations came back at a $5 CPL and $17 CPL for the second.
           </p>
           <Callout>
-            The $5 leads ended up worth $20 each. The $17 leads ended up worth $189.
+            The $5 leads ended up worth on average $20 each. The $17 leads ended up worth on average
+            $189.
           </Callout>
           <p>
-            Cost per lead isn&rsquo;t a dial you turn. Whichever event you tell the platform to
-            chase decides what a lead costs. If you bid higher on a registration campaign,
-            you&rsquo;ll pay more for the same registrants.
-          </p>
-          <p>
-            Two conditions before you try it: you need enough purchase volume for the platform to
-            learn on, and you need something above the free registration worth optimizing toward.
-            Ours was the book pre-order, and above that a roughly $300 order for 15 copies that
-            unlocked two of Alex&rsquo;s internal handbooks.
-          </p>
-          <p>
-            What you sell decides how much you can afford to pay for a lead. That&rsquo;s settled
-            long before anyone writes a hook.
+            Two caveats to consider: you need enough purchase volume for the platform to learn on,
+            and you need something above the free registration worth optimizing toward. Ours was the
+            book pre-order, and above that a roughly $300 order for 15 copies that unlocked two of
+            Alex&rsquo;s internal handbooks.
           </p>
 
           <ArticleH2>Battle test your hooks</ArticleH2>
           <p>
             Instead of writing ads from scratch, we went looking for material that was already
-            validated somewhere else. Most of ours came from Alex&rsquo;s tweets, because a post that did
-            numbers already passed a test on the audience we were about to pay to reach. The rest
-            came from $100M Leads 2 years earlier, from old Gym Launch and Skool ads, from excerpts
-            off the pages of the book, and from a sales letter he&rsquo;d mailed to his list that we
-            had him read on camera. We rewrote a Humane Society TikTok and a viral morning routine
-            video with Alex in them.
-          </p>
-          <p>
-            We ran one ad per ad set, all broad, no targeting. One ad per set means a weak ad
-            can&rsquo;t coast on the budget a winner is pulling in beside it, so every piece had to
-            earn its own spend. Inside 36 to 48 hours you knew whether to keep it.
-          </p>
-          <p>
-            The test can only pick from what you give it. When you buy broad, the people seeing your
-            ad range from never having heard of Alex to owning both his books, so we wrote hooks in
-            buckets and kept all of them live.
+            validated. Some came from Alex&rsquo;s tweets, because a post that performed well shows
+            it resonates with the audience we&rsquo;re trying to reach. Others came from $100M Leads
+            2 years earlier, from old Gym Launch and Skool ads, from excerpts off the pages of the
+            book, and from a sales letter he&rsquo;d mailed to his list that we had him read on
+            camera.
           </p>
 
-          <ArticleH3>Secret</ArticleH3>
+<ArticleH3>Secret</ArticleH3>
           <p>
             For someone who has no idea who Alex is and needs a reason to stop scrolling.
           </p>
@@ -203,7 +180,11 @@ export default function AlexHormoziCaseStudy() {
             If you only write in that last bucket, you cap your own reach, because you&rsquo;re
             talking to people who already know you.
           </p>
-          <p>These are the ones that came out on top:</p>
+                    <p>
+            If you only write in that last bucket, you cap your own reach, because you&rsquo;re
+            talking to people who already know you.
+          </p>
+<p>These are the ones that came out on top:</p>
           <ul>
             <li>I&rsquo;m gonna tell you a secret.</li>
             <li>The rumors are true.</li>
@@ -217,20 +198,20 @@ export default function AlexHormoziCaseStudy() {
               for the vast majority of my material wealth.
             </li>
           </ul>
-          <p>Almost none of them mention the book.</p>
+                    <p>
+            Notice how almost none of them mention the book. People don&rsquo;t want to buy a book,
+            they want to buy an outcome.
+          </p>
 
           <ArticleH2>Kaleidoscope your winners</ArticleH2>
           <p>
-            Kaleidoscoping means taking an ad that already won, breaking it into its parts, and
-            rebuilding it one change at a time. The parts you can move: hook, body, CTA, prop,
-            camera, who says it.
+            Kaleidoscoping means taking an ad that already won, breaking it into its parts (hook,
+            body, CTA), and rebuilding it one change at a time. This is how you can &ldquo;double
+            down&rdquo; on your winners.
           </p>
-          <p>
-            Because everything else stays fixed, a version that beats the original tells you
-            exactly which change did it. Then you make 10 more of that change instead of guessing.
-          </p>
+          <p>A few ways to kaleidoscope your ad:</p>
 
-          <ArticleH3>Change the prop, keep the line</ArticleH3>
+<ArticleH3>Change the prop, keep the line</ArticleH3>
           <p>
             &ldquo;Wanna hear something insane&rdquo; ran against a data stack, a giant tennis ball,
             a news microphone, a giant purple paper wall, a money bin, and a ping pong table. The
@@ -361,7 +342,7 @@ export default function AlexHormoziCaseStudy() {
             one of them Alex had said &ldquo;I even had to delay it by an extra six months.&rdquo;
             We had Leila say &ldquo;we even had to delay it.&rdquo;
           </p>
-          <ArticleH2>TLDR:</ArticleH2>
+                    <ArticleH2>TLDR:</ArticleH2>
           <ol>
             <li>Use the 6Ps</li>
             <li>Optimize for AOV, not CPL</li>
