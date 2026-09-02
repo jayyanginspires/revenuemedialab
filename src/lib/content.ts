@@ -89,11 +89,11 @@ export const CASE_STUDIES = [
   {
     slug: "shelby-sapp-ads",
     person: "Shelby Sapp",
-    brand: "She Sells Academy",
+    brand: "SheSells Academy",
     headline: "8 figures in profit from Meta ads at 3–4x ROAS",
     image: {
       src: "/images/shelby-sapp-ads-card.jpg",
-      alt: "Shelby Sapp, founder of She Sells Academy.",
+      alt: "Shelby Sapp, founder of SheSells Academy.",
     },
   },
   {
@@ -113,7 +113,7 @@ export const CASE_STUDIES = [
 // version mixed a wordmark, a logo file and a photo, which never read as a
 // set no matter how it was aligned.
 export const CLIENT_LOGOS = [
-  { person: "Shelby Sapp", brand: "She Sells", photo: "/logos/shelby-sapp.jpg" },
+  { person: "Shelby Sapp", brand: "SheSells Academy", photo: "/logos/shelby-sapp.jpg" },
   { person: "Alex Hormozi", brand: "Acquisition.com", photo: "/logos/alex-hormozi.jpg" },
   { person: "Leila Hormozi", brand: "Acquisition.com", photo: "/logos/leila-hormozi.jpg" },
   { person: "Noah Kagan", brand: "AppSumo", photo: "/logos/noah-kagan.jpg" },
@@ -168,7 +168,7 @@ export const FAQ = [
   },
 ];
 
-export const DISCLAIMER = `Results referenced on this page, where present, are specific to the clients named and are not typical or guaranteed for every business. Past performance does not guarantee future results. Nothing on this page is a promise of income, revenue, or growth. Individual results vary based on market, offer, execution, and factors outside our control. By booking a call, you consent to the call being recorded for quality and training purposes; recordings are not shared outside our team without consent.`;
+export const DISCLAIMER = `Results referenced on this page, where present, are specific to the clients named and are not typical or guaranteed for every business. Past performance does not guarantee future results. Nothing on this page is a promise of income, revenue, or growth. Individual results vary based on market, offer, execution, and factors outside our control. If we book a call with you, it may be recorded for quality and training purposes; recordings are not shared outside our team without consent.`;
 
 export const BOOKING = {
   calendlyUrl:

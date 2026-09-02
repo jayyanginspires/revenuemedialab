@@ -14,7 +14,7 @@ import { SITE } from "@/lib/content";
 export const metadata: Metadata = {
   title: `How we applied the 6Ps to Shelby Sapp's Meta ads — ${SITE.name}`,
   description:
-    "Running the 6Ps of copyTHINKING on She Sells Academy: sourcing from sales calls, lifestyle positioning, stacked proof, and the filters every batch passes before it ships.",
+    "Running the 6Ps of copyTHINKING on SheSells Academy: sourcing from sales calls, lifestyle positioning, stacked proof, and the filters every batch passes before it ships.",
 };
 
 export default function ShelbySappAdsCaseStudy() {
@@ -38,14 +38,14 @@ export default function ShelbySappAdsCaseStudy() {
           ]}
           image={{
             src: "/images/shelby-sapp-ads.jpg",
-            alt: "Shelby Sapp, founder of She Sells Academy.",
-            caption: "Shelby Sapp, founder of She Sells Academy.",
+            alt: "Shelby Sapp, founder of SheSells Academy.",
+            caption: "Shelby Sapp, founder of SheSells Academy.",
           }}
         />
 
         <CaseStudyArticle>
           <p>
-            Shelby runs She Sells Academy, the largest women&rsquo;s high-ticket sales training
+            Shelby runs SheSells Academy, the largest women&rsquo;s high-ticket sales training
             company in the world.
           </p>
           <p>
