@@ -11,6 +11,16 @@ const PAPER = "#F7F9F7";
 const MUTED = "#5B6663";
 const BORDER = "#DCE5E0";
 
+// Split HERO.headline on its accent phrase so the card tracks the site copy
+// instead of drifting. Hardcoding the lines is what let the image keep saying
+// "organic content" after the hero changed to "written media". Explicit lines
+// also stop a short word orphaning onto a line of its own.
+const accentAt = HERO.headline.toLowerCase().lastIndexOf(HERO.headlineAccent.toLowerCase());
+const HEADLINE_LEAD =
+  accentAt > 0 ? HERO.headline.slice(0, accentAt).trim() : HERO.headline;
+const HEADLINE_ACCENT =
+  accentAt > 0 ? HERO.headline.slice(accentAt) : HERO.headlineAccent;
+
 // The real mark, inlined. Satori has no access to the theme tokens the live
 // component uses, so the values are resolved here.
 function Mark({ size: s }: { size: number }) {
@@ -120,8 +130,8 @@ export default async function OpengraphImage() {
             letterSpacing: "-0.03em",
           }}
         >
-          <div style={{ display: "flex" }}>We help founders scale with</div>
-          <div style={{ display: "flex", color: ACCENT }}>organic content</div>
+          <div style={{ display: "flex" }}>{HEADLINE_LEAD}</div>
+          <div style={{ display: "flex", color: ACCENT }}>{HEADLINE_ACCENT}</div>
         </div>
 
         {/* footer rule */}
