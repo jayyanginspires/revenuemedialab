@@ -131,7 +131,13 @@ export default function AlexHormoziCaseStudy() {
             camera.
           </p>
 
-<ArticleH3>Secret</ArticleH3>
+          <p>
+            Not everyone seeing these ads was in the same place. Some had never heard of Alex,
+            others had followed him for years. So we sorted the hooks into buckets by who each one
+            was for.
+          </p>
+
+          <ArticleH3>Secret</ArticleH3>
           <p>
             For someone who has no idea who Alex is and needs a reason to stop scrolling.
           </p>
@@ -184,7 +190,7 @@ export default function AlexHormoziCaseStudy() {
             If you only write in that last bucket, you cap your own reach, because you&rsquo;re
             talking to people who already know you.
           </p>
-<p>These are the ones that came out on top:</p>
+          <p>These are the ones that came out on top:</p>
           <ul>
             <li>I&rsquo;m gonna tell you a secret.</li>
             <li>The rumors are true.</li>
@@ -211,7 +217,7 @@ export default function AlexHormoziCaseStudy() {
           </p>
           <p>A few ways to kaleidoscope your ad:</p>
 
-<ArticleH3>Change the prop, keep the line</ArticleH3>
+          <ArticleH3>Change the prop, keep the line</ArticleH3>
           <p>
             &ldquo;Wanna hear something insane&rdquo; ran against a data stack, a giant tennis ball,
             a news microphone, a giant purple paper wall, a money bin, and a ping pong table. The
@@ -342,7 +348,7 @@ export default function AlexHormoziCaseStudy() {
             one of them Alex had said &ldquo;I even had to delay it by an extra six months.&rdquo;
             We had Leila say &ldquo;we even had to delay it.&rdquo;
           </p>
-                    <ArticleH2>TLDR:</ArticleH2>
+          <ArticleH2>TLDR:</ArticleH2>
           <ol>
             <li>Use the 6Ps</li>
             <li>Optimize for AOV, not CPL</li>

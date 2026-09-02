@@ -175,6 +175,17 @@ export default function NoahKaganCaseStudy() {
             <li>Put the hooks on the posts</li>
           </ol>
           <p>A remix can beat both of the posts it came from.</p>
+
+          <ArticleH2>In summary:</ArticleH2>
+          <ol>
+            <li>
+              Use a content waterfall approach to creating content: test angles with short form,
+              turn into long form, then waterfall back down into short form
+            </li>
+            <li>Iterate to find the content type that drives the best results</li>
+            <li>Build a hall of fame of your top posts</li>
+            <li>Use the 3Rs to multiply your efforts</li>
+          </ol>
         </CaseStudyArticle>
 
         <div className="pb-20">
