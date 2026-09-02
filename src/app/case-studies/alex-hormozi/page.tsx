@@ -24,11 +24,6 @@ export default function AlexHormoziCaseStudy() {
       <main className="bg-white">
         <CaseStudyHero
           headline="How We Helped Break a Guinness World Record Book Launch"
-          dek={
-            <>
-              We wrote ad copy for the launch of Alex Hormozi&rsquo;s <em>$100M Money Models</em>.
-            </>
-          }
           stats={[
             { value: "2,917,443", label: "Copies Sold" },
             { value: "$105M", label: "Launch Revenue" },
@@ -44,6 +39,9 @@ export default function AlexHormoziCaseStudy() {
         />
 
         <CaseStudyArticle>
+          <p>
+            We wrote ad copy for the launch of Alex Hormozi&rsquo;s <em>$100M Money Models</em>.
+          </p>
           <p>
             It sold 2,917,443 copies and took the Guinness World Record for fastest-selling
             non-fiction book. The launch did $105M.

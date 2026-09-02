@@ -14,7 +14,7 @@ export function CaseStudyHero({
   eyebrow = "Case study",
 }: {
   headline: string;
-  dek: ReactNode;
+  dek?: ReactNode;
   stats: Stat[];
   image?: { src: string; alt: string; caption: string };
   eyebrow?: string;
@@ -25,7 +25,7 @@ export function CaseStudyHero({
       <div className="relative mx-auto max-w-3xl px-6 pb-14 pt-14 text-center md:pt-20">
         <p className="text-muted">{eyebrow}</p>
         <h1 className="h1-display mt-4 text-foreground">{headline}</h1>
-        <p className="mx-auto mt-5 max-w-xl leading-relaxed text-muted">{dek}</p>
+        {dek && <p className="mx-auto mt-5 max-w-xl leading-relaxed text-muted">{dek}</p>}
 
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-2 gap-y-6 border-y border-border py-6 sm:grid-cols-4">
           {stats.map((stat) => (
