@@ -55,7 +55,8 @@ export default function AlexHormoziCaseStudy() {
           </p>
           <p>
             Identity callouts, outcome hooks, promise hooks — they all work. But if you don&rsquo;t
-            know why they work, all you can do is repeat them until they stop.
+            know why they work, all you can do is repeat them. Instead, I want to teach you how to
+            fish.
           </p>
           <p>
             Before we write a line we answer 6 questions about the offer. We call them the 6Ps.
