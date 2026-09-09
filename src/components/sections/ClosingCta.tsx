@@ -2,7 +2,7 @@ import { LinkButton } from "@/components/Button";
 import { ArrowUpRightIcon } from "@/components/Icons";
 import { CLOSING_CTA, SITE } from "@/lib/content";
 
-const ACCENT_WORD = "organically";
+const ACCENT_WORD = "written media";
 
 function AccentLine({ text }: { text: string }) {
   const i = text.toLowerCase().indexOf(ACCENT_WORD);

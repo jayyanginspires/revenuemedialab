@@ -137,8 +137,8 @@ export const WHO_FOR = {
 
 export const CLOSING_CTA = {
   headline: "Install your revenue media engine.",
-  // "organically" renders in the accent color — see the split in ClosingCta.tsx.
-  subheadline: "Dominate organically.",
+  // "written media" renders in the accent color — see the split in ClosingCta.tsx.
+  subheadline: "Scale with written media.",
 };
 
 export const FAQ = [
