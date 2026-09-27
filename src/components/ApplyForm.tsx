@@ -8,34 +8,14 @@ import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { ChevronDownIcon } from "@/components/Icons";
 import { COUNTRY_CODES } from "@/lib/countryCodes";
 import { BOOKING } from "@/lib/content";
+import {
+  BOTTLENECK_OPTIONS,
+  BOTTLENECK_OTHER_VALUE,
+  HONEYPOT_FIELD,
+  REVENUE_NOT_QUALIFYING,
+  REVENUE_OPTIONS,
+} from "@/lib/leads";
 import { buildQueryString, readClientUtmCookie, withPersistedUtm } from "@/lib/utm";
-
-const REVENUE_OPTIONS = [
-  { value: "under_10k", label: "Less than $10k/mo" },
-  { value: "10k_50k", label: "$10k – $50k/mo" },
-  { value: "50k_100k", label: "$50k – $100k/mo" },
-  { value: "100k_500k", label: "$100k – $500k/mo" },
-  { value: "500k_plus", label: "$500k/mo+" },
-];
-
-const BOTTLENECK_OPTIONS = [
-  { value: "not_publishing_enough", label: "We're not publishing enough content consistently." },
-  {
-    value: "no_strategy",
-    label: "Our content is random / reactive – no real strategy, schedule, or tracking.",
-  },
-  {
-    value: "no_reliable_team",
-    label: "I don't have a reliable media team (it's just me or flaky freelancers)",
-  },
-  {
-    value: "no_conversion",
-    label: "We get views/attention, but it's not turning into qualified leads and sales.",
-  },
-  { value: "founder_bottleneck", label: "I am the bottleneck – everything depends on me personally." },
-];
-
-const BOTTLENECK_OTHER_VALUE = "other";
 
 type ChoiceOption = { value: string; label: string };
 
@@ -125,9 +105,6 @@ function ChoiceGroup({
   );
 }
 
-// Only "$50k/mo" and above qualify — everything under that is disqualifying.
-const REVENUE_NOT_QUALIFYING = new Set(["under_10k", "10k_50k"]);
-
 export function ApplyForm() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -142,11 +119,15 @@ export function ApplyForm() {
   const [monthlyRevenue, setMonthlyRevenue] = useState("");
   const [bottleneck, setBottleneck] = useState("");
   const [bottleneckOther, setBottleneckOther] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [error, setError] = useState("");
+  const mountedAt = useRef(0);
 
   // Warm up everything the next step needs *before* the visitor submits, so
   // the Calendly embed is ready to swap in instantly instead of racing the
   // webhook and Calendly's own asset fetches.
   useEffect(() => {
+    mountedAt.current = Date.now();
     router.prefetch(withPersistedUtm("/apply/declined"));
     router.prefetch(withPersistedUtm("/book/thank-you"));
     preconnect("https://calendly.com");
@@ -164,9 +145,10 @@ export function ApplyForm() {
     }
   }, [stage]);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
+    setError("");
 
     const countryDial = COUNTRY_CODES.find((c) => c.name === countryName)?.dial ?? "+1";
 
@@ -180,18 +162,31 @@ export function ApplyForm() {
       bottleneck,
       bottleneckOther: bottleneck === BOTTLENECK_OTHER_VALUE ? bottleneckOther : "",
       submittedAt: new Date().toISOString(),
+      elapsedMs: Date.now() - mountedAt.current,
+      [HONEYPOT_FIELD]: honeypot,
     };
 
     const qs = buildQueryString(readClientUtmCookie());
 
-    // Fire-and-forget: the lead still reaches Zapier (the route handler
-    // keeps running after it responds), but the visitor shouldn't sit on a
-    // network round trip before seeing their next step.
-    fetch(`/api/lead${qs ? `?${qs}` : ""}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }).catch((err) => console.error("Failed to submit application", err));
+    // Wait for the server's validation (it checks the email domain can
+    // actually receive mail) so a bad entry can be corrected here. The Zapier
+    // forward itself still happens after the response is sent.
+    try {
+      const res = await fetch(`/api/lead${qs ? `?${qs}` : ""}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (res.status === 400) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Please check your details and try again.");
+        setSubmitting(false);
+        return;
+      }
+    } catch (err) {
+      // A network hiccup shouldn't strand a real applicant — let them through.
+      console.error("Failed to submit application", err);
+    }
 
     if (REVENUE_NOT_QUALIFYING.has(monthlyRevenue)) {
       router.push(withPersistedUtm("/apply/declined"));
@@ -318,6 +313,26 @@ export function ApplyForm() {
           placeholder: "Other (briefly describe)*",
         }}
       />
+
+      {/* Honeypot: hidden from people and screen readers, filled by bots. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor={HONEYPOT_FIELD}>Leave this field empty</label>
+        <input
+          id={HONEYPOT_FIELD}
+          name={HONEYPOT_FIELD}
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
+
+      {error && (
+        <p role="alert" className="text-center text-sm font-medium text-red-600">
+          {error}
+        </p>
+      )}
 
       <div className="flex justify-center">
         <Button type="submit" disabled={submitting} className="!px-9 !py-4 !text-[17px]">
