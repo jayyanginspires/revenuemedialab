@@ -18,7 +18,7 @@ export default function DeclinedPage() {
           <h1 className="h2-display text-foreground">Thanks for applying</h1>
           <p className="mt-4 leading-relaxed text-muted">
             Based on what you shared, the Revenue Media Engine isn&apos;t the right fit right
-            now — it&apos;s built for businesses doing $10k+ in monthly revenue, where the
+            now — it&apos;s built for businesses doing $50k+ in monthly revenue, where the
             attribution and team-install work has the room to pay for itself. That&apos;s not a
             reflection on where you&apos;re headed, just where the engagement makes sense today.
           </p>

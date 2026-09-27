@@ -125,8 +125,8 @@ function ChoiceGroup({
   );
 }
 
-// Only "under $10k/mo" is disqualifying — every other revenue bracket qualifies.
-const REVENUE_NOT_QUALIFYING = new Set(["under_10k"]);
+// Only "$50k/mo" and above qualify — everything under that is disqualifying.
+const REVENUE_NOT_QUALIFYING = new Set(["under_10k", "10k_50k"]);
 
 export function ApplyForm() {
   const router = useRouter();
