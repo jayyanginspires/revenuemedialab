@@ -10,6 +10,7 @@ export const SITE = {
   name: "Revenue Media Lab",
   url: "[[PRODUCTION DOMAIN — e.g. https://apply.revenuemedialab.com]]",
   qualifyCta: "See If You Qualify",
+  youtube: "https://www.youtube.com/@JayYangInspires",
 };
 
 // Five headline options drafted from the offer/avatar doc, kept for A/B

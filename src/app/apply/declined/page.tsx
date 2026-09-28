@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LinkButton } from "@/components/Button";
+import { YouTubeIcon } from "@/components/Icons";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SITE } from "@/lib/content";
 
@@ -28,6 +30,20 @@ export default function DeclinedPage() {
           </p>
           <div className="mt-8">
             <WaitlistForm />
+          </div>
+
+          <div className="mt-14 rounded-2xl border-2 border-border bg-background-pale p-8">
+            <h2 className="text-xl font-bold text-foreground">Free resources to get you there</h2>
+            <p className="mt-3 leading-relaxed text-muted">
+              We break down the same systems we install for clients on Jay&apos;s YouTube channel.
+              Start there, and apply again once you&apos;re past $50k a month.
+            </p>
+            <div className="mt-6 flex justify-center">
+              <LinkButton href={SITE.youtube} target="_blank" variant="secondary">
+                <YouTubeIcon className="h-5 w-5 text-[#FF0000]" />
+                Watch on YouTube
+              </LinkButton>
+            </div>
           </div>
         </div>
       </main>
