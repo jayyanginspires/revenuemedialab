@@ -35,8 +35,8 @@ export default function DeclinedPage() {
           <div className="mt-14 rounded-2xl border-2 border-border bg-background-pale p-8">
             <h2 className="text-xl font-bold text-foreground">Free resources to get you there</h2>
             <p className="mt-3 leading-relaxed text-muted">
-              We break down the same systems we install for clients on Jay&apos;s YouTube channel.
-              Start there, and apply again once you&apos;re past $50k a month.
+              We share a lot of free content on Jay&apos;s YouTube channel to help you get to a
+              place where you qualify to work with us.
             </p>
             <div className="mt-6 flex justify-center">
               <LinkButton href={SITE.youtube} target="_blank" variant="secondary">
