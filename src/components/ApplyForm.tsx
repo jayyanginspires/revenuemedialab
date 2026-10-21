@@ -12,6 +12,8 @@ import {
   BOTTLENECK_OPTIONS,
   BOTTLENECK_OTHER_VALUE,
   HONEYPOT_FIELD,
+  PLATFORM_OPTIONS,
+  POSTING_FREQUENCY_OPTIONS,
   REVENUE_NOT_QUALIFYING,
   REVENUE_OPTIONS,
 } from "@/lib/leads";
@@ -105,6 +107,58 @@ function ChoiceGroup({
   );
 }
 
+function MultiChoiceGroup({
+  legend,
+  name,
+  options,
+  values,
+  onChange,
+}: {
+  legend: string;
+  name: string;
+  options: ChoiceOption[];
+  values: string[];
+  onChange: (values: string[]) => void;
+}) {
+  return (
+    <fieldset>
+      <legend className="text-sm font-semibold text-foreground">{legend}</legend>
+      <p className="mt-1 text-xs text-muted">Select all that apply.</p>
+      <div className="mt-2.5 grid gap-2 sm:grid-cols-5">
+        {options.map((option) => {
+          const checked = values.includes(option.value);
+          return (
+            <label
+              key={option.value}
+              className={`cursor-pointer rounded-lg border px-3.5 py-2.5 text-sm font-medium transition-colors ${
+                checked
+                  ? "border-accent bg-accent/5 text-foreground"
+                  : "border-border text-muted hover:border-accent/40"
+              }`}
+            >
+              <input
+                type="checkbox"
+                name={name}
+                value={option.value}
+                checked={checked}
+                onChange={() =>
+                  onChange(
+                    checked
+                      ? values.filter((v) => v !== option.value)
+                      : [...values, option.value],
+                  )
+                }
+                className="sr-only"
+              />
+              {option.label}
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+}
+
 export function ApplyForm() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -116,7 +170,10 @@ export function ApplyForm() {
   const [countryName, setCountryName] = useState(COUNTRY_CODES[0].name);
   const [phone, setPhone] = useState("");
   const [business, setBusiness] = useState("");
+  const [role, setRole] = useState("");
   const [monthlyRevenue, setMonthlyRevenue] = useState("");
+  const [platforms, setPlatforms] = useState<string[]>([]);
+  const [postingFrequency, setPostingFrequency] = useState("");
   const [bottleneck, setBottleneck] = useState("");
   const [bottleneckOther, setBottleneckOther] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -147,6 +204,11 @@ export function ApplyForm() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    // Checkbox groups can't use native `required`, so check this one by hand.
+    if (platforms.length === 0) {
+      setError("Please choose at least one platform you want to scale on.");
+      return;
+    }
     setSubmitting(true);
     setError("");
 
@@ -158,7 +220,10 @@ export function ApplyForm() {
       email,
       phone: phone ? `${countryDial} ${phone}` : phone,
       business,
+      role,
       monthlyRevenue,
+      platforms,
+      postingFrequency,
       bottleneck,
       bottleneckOther: bottleneck === BOTTLENECK_OTHER_VALUE ? bottleneckOther : "",
       submittedAt: new Date().toISOString(),
@@ -281,14 +346,31 @@ export function ApplyForm() {
         <label htmlFor="business" className="text-sm font-semibold text-foreground">
           Tell me about your business
         </label>
-        <input
+        <textarea
           id="business"
           name="business"
-          type="text"
           required
-          placeholder="*"
+          rows={3}
+          placeholder="What you sell, who you sell it to, and how you get customers today*"
           value={business}
           onChange={(e) => setBusiness(e.target.value)}
+          className="mt-2.5 w-full resize-y rounded-lg border border-border px-3.5 py-2.5 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="role" className="text-sm font-semibold text-foreground">
+          Your role in the company
+        </label>
+        <input
+          id="role"
+          name="role"
+          type="text"
+          required
+          autoComplete="organization-title"
+          placeholder="e.g. Founder & CEO*"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
           className="mt-2.5 w-full rounded-lg border border-border px-3.5 py-2.5 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent"
         />
       </div>
@@ -299,6 +381,25 @@ export function ApplyForm() {
         options={REVENUE_OPTIONS}
         value={monthlyRevenue}
         onChange={setMonthlyRevenue}
+      />
+
+      <MultiChoiceGroup
+        legend="Which platforms are you looking to primarily scale your reach on?"
+        name="platforms"
+        options={PLATFORM_OPTIONS}
+        values={platforms}
+        onChange={(next) => {
+          setPlatforms(next);
+          if (next.length > 0) setError("");
+        }}
+      />
+
+      <ChoiceGroup
+        legend="On average, how often do you or your team currently post per platform?"
+        name="postingFrequency"
+        options={POSTING_FREQUENCY_OPTIONS}
+        value={postingFrequency}
+        onChange={setPostingFrequency}
       />
 
       <ChoiceGroup

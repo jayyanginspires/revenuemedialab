@@ -17,7 +17,6 @@ export default function Home() {
       <main>
         <Hero />
         <ClientLogos />
-        <ApplySection />
         <Reveal>
           <OfferOverview />
         </Reveal>
@@ -27,6 +26,7 @@ export default function Home() {
         <Reveal>
           <WhoFor />
         </Reveal>
+        <ApplySection />
         <Reveal>
           <FaqSection />
         </Reveal>

@@ -9,8 +9,24 @@ export const REVENUE_OPTIONS = [
   { value: "500k_plus", label: "$500k/mo+" },
 ];
 
-// Only "$50k/mo" and above qualify — everything under that is disqualifying.
-export const REVENUE_NOT_QUALIFYING = new Set(["under_10k", "10k_50k"]);
+// Only "$100k/mo" and above qualify — everything under that is disqualifying.
+export const REVENUE_NOT_QUALIFYING = new Set(["under_10k", "10k_50k", "50k_100k"]);
+
+export const PLATFORM_OPTIONS = [
+  { value: "x", label: "X/Twitter" },
+  { value: "linkedin", label: "LinkedIn" },
+  { value: "instagram", label: "Instagram" },
+  { value: "youtube", label: "YouTube" },
+  { value: "paid_ads", label: "Paid ads" },
+];
+
+export const POSTING_FREQUENCY_OPTIONS = [
+  { value: "not_posting", label: "We don't post yet" },
+  { value: "under_weekly", label: "Less than once a week" },
+  { value: "1_3_weekly", label: "1–3x per week" },
+  { value: "4_6_weekly", label: "4–6x per week" },
+  { value: "daily_plus", label: "Daily or more" },
+];
 
 export const BOTTLENECK_OPTIONS = [
   { value: "not_publishing_enough", label: "We're not publishing enough content consistently." },

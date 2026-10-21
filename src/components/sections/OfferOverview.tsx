@@ -6,11 +6,11 @@ import { OFFER_PHASES, OFFER_SUMMARY, SITE } from "@/lib/content";
 
 export function OfferOverview() {
   return (
-    <section className="border-t border-t-accent border-b border-b-border bg-background-pale">
+    <section className="bg-white">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="mx-auto max-w-xl text-center">
           <h2 className="h2-display text-foreground">
-            We scale your business with revenue-driving media systems
+            Our process
           </h2>
           <p className="mt-4 leading-relaxed text-muted">
             More reach. Better leads. Less headache. All within {OFFER_SUMMARY.duration}.

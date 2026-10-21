@@ -6,12 +6,16 @@ import {
   BOTTLENECK_OTHER_VALUE,
   HONEYPOT_FIELD,
   MIN_FILL_MS,
+  PLATFORM_OPTIONS,
+  POSTING_FREQUENCY_OPTIONS,
   REVENUE_NOT_QUALIFYING,
   REVENUE_OPTIONS,
 } from "@/lib/leads";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const REVENUE_VALUES = new Set(REVENUE_OPTIONS.map((o) => o.value));
+const PLATFORM_VALUES = new Set(PLATFORM_OPTIONS.map((o) => o.value));
+const POSTING_FREQUENCY_VALUES = new Set(POSTING_FREQUENCY_OPTIONS.map((o) => o.value));
 const BOTTLENECK_VALUES = new Set([
   ...BOTTLENECK_OPTIONS.map((o) => o.value),
   BOTTLENECK_OTHER_VALUE,
@@ -99,8 +103,18 @@ function checkApplication(lead: Record<string, string>): Invalid | null {
   if (lead.business.length < 2) {
     return { field: "business", error: "Please tell us about your business." };
   }
+  if (lead.role.length < 2) {
+    return { field: "role", error: "Please choose your role in the company." };
+  }
   if (!REVENUE_VALUES.has(lead.monthlyRevenue)) {
     return { field: "monthlyRevenue", error: "Please choose your monthly revenue." };
+  }
+  const platforms = lead.platforms ? lead.platforms.split(",") : [];
+  if (platforms.length === 0 || !platforms.every((p) => PLATFORM_VALUES.has(p))) {
+    return { field: "platforms", error: "Please choose at least one platform you want to scale on." };
+  }
+  if (!POSTING_FREQUENCY_VALUES.has(lead.postingFrequency)) {
+    return { field: "postingFrequency", error: "Please choose how often you currently post." };
   }
   if (!BOTTLENECK_VALUES.has(lead.bottleneck)) {
     return { field: "bottleneck", error: "Please choose your biggest bottleneck." };
@@ -155,8 +169,14 @@ export async function POST(request: NextRequest) {
       fullName: str(body.fullName, 120),
       email,
       phone: str(body.phone, 40),
-      business: str(body.business, 1000),
+      business: str(body.business, 2000),
+      role: str(body.role, 120),
       monthlyRevenue: str(body.monthlyRevenue, 40),
+      // Joined so it lands in a single Zapier/sheet column, e.g. "x,linkedin".
+      platforms: Array.isArray(body.platforms)
+        ? [...new Set(body.platforms.map((p) => str(p, 40)).filter(Boolean))].slice(0, 10).join(",")
+        : "",
+      postingFrequency: str(body.postingFrequency, 40),
       bottleneck: str(body.bottleneck, 40),
       bottleneckOther: str(body.bottleneckOther, 500),
     };
