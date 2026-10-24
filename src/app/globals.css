@@ -15,9 +15,59 @@
   --dark-border: #2A302C;
   --dark-ink: #F2F5F3;
   --dark-ink-soft: #9AA39E;
+  --error: #B42318;
+
+  /* The Apparatus. Amber = raw founder story, green = distilled and
+     shipping. Never use either decoratively outside that meaning. */
+  --bench: #F4F8F6;
+  --glass: #FFFFFF;
+  --glass-tint: #DDEBE5;
+  --ink: #12181A;
+  --ink-soft: #2E3A37;
+  --raw: #E9A23B;
+  --raw-light: #F1C27A;
+  --raw-pale: #FCEBD0;
+  --raw-text: #9A5B07;
+  --mid-1: #C9B25A;
+  --mid-1-text: #6E5F17;
+  --mid-2: #6FB27A;
+  --mid-2-text: #2F6B3A;
+  --solution: #1F8F5C;
+  --solution-dark: #146945;
+  --rule: #C9D6D0;
+  --bench-dark-ink: #F2F5F3;
+  --bench-dark-muted: #C7CEC9;
+  --bench-dark-rail: #2A302C;
+}
+
+@theme {
+  /* No Tailwind default palette: every color comes from the tokens below. */
+  --color-*: initial;
 }
 
 @theme inline {
+  --color-white: #FFFFFF;
+  --color-transparent: transparent;
+  --color-error: var(--error);
+  --color-bench: var(--bench);
+  --color-glass: var(--glass);
+  --color-glass-tint: var(--glass-tint);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-raw: var(--raw);
+  --color-raw-light: var(--raw-light);
+  --color-raw-pale: var(--raw-pale);
+  --color-raw-text: var(--raw-text);
+  --color-mid-1: var(--mid-1);
+  --color-mid-1-text: var(--mid-1-text);
+  --color-mid-2: var(--mid-2);
+  --color-mid-2-text: var(--mid-2-text);
+  --color-solution: var(--solution);
+  --color-solution-dark: var(--solution-dark);
+  --color-rule: var(--rule);
+  --color-bench-dark-ink: var(--bench-dark-ink);
+  --color-bench-dark-muted: var(--bench-dark-muted);
+  --color-bench-dark-rail: var(--bench-dark-rail);
   --color-background: var(--background);
   --color-background-pale: var(--background-pale);
   --color-paper: var(--paper);
@@ -40,7 +90,7 @@
 }
 
 body {
-  background: var(--color-background);
+  background: var(--bench);
   color: var(--color-foreground);
   font-family: var(--font-sans);
 }
@@ -172,4 +222,327 @@ body {
 
 .placeholder-flag {
   position: relative;
+}
+
+/* ───────────── The Apparatus ───────────── */
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--raw);
+  outline-offset: 3px;
+}
+
+.apparatus {
+  background: var(--bench);
+  color: var(--ink);
+}
+
+.display-h1,
+.display-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.display-h1 {
+  font-size: clamp(58px, 7.4vw, 112px);
+  line-height: 0.92;
+}
+.display-h2 {
+  font-size: clamp(44px, 5.6vw, 80px);
+  line-height: 0.95;
+}
+@media (max-width: 420px) {
+  /* 58px Anton overflows a 360px screen on "DISTRIBUTION." */
+  .display-h1 { font-size: 15.2vw; }
+  .display-h2 { font-size: 11.6vw; }
+}
+
+.margin-note {
+  font-family: var(--font-script);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--raw-text);
+}
+
+/* Primary button: pushed into the bench on press. */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 30px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: var(--solution);
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  box-shadow: 0 5px 0 var(--ink);
+  transition: transform 90ms ease, box-shadow 90ms ease, background-color 150ms ease;
+}
+.btn-primary:hover { background: var(--solution-dark); }
+.btn-primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 var(--ink);
+}
+.btn-primary--sm {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 15px;
+  box-shadow: 0 4px 0 var(--ink);
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 8px;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  text-underline-offset: 4px;
+}
+.btn-text:hover { text-decoration: underline; }
+
+/* Logo: on hover the tubes refill left to right, rising like a bar chart. */
+.rml-mark .slosh {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.rml-lockup:hover .rml-mark .slosh {
+  animation: chart-rise 700ms cubic-bezier(0.3, 1.25, 0.5, 1) both;
+}
+.rml-lockup:hover .rml-mark .slosh:nth-of-type(2) { animation-delay: 140ms; }
+.rml-lockup:hover .rml-mark .slosh:nth-of-type(3) { animation-delay: 280ms; }
+@keyframes chart-rise {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* Hero flask loops: bubbles rise and pop, fragments drift. */
+.flask-bubble {
+  animation: bubble-rise var(--dur, 7s) ease-in infinite;
+  animation-delay: var(--delay, 0s);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  80% { transform: translateY(-150px) scale(1); opacity: 1; }
+  88% { transform: translateY(-165px) scale(1.5); opacity: 0; }
+  100% { transform: translateY(-165px) scale(1.5); opacity: 0; }
+}
+.fragment-drift {
+  animation: drift var(--dur, 5s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes drift {
+  from { translate: 0 calc(var(--amp, 6px) * -1); }
+  to { translate: 0 var(--amp, 6px); }
+}
+
+/* Hero flask fills once on load, overshoots, settles. */
+.flask-liquid {
+  animation: liquid-rise 1.8s cubic-bezier(0.3, 1.35, 0.45, 1) 0.2s both;
+}
+@keyframes liquid-rise {
+  from { transform: translateY(400px); }
+  to { transform: translateY(0); }
+}
+
+/* Proof strip marquee: the account list scrolls past on a loop. */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 45s linear infinite; }
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* No auto-scroll: let people swipe/scroll the accounts themselves. */
+  .marquee { overflow-x: auto; }
+  .flask-liquid,
+  .flask-bubble,
+  .fragment-drift,
+  .marquee-track,
+  .rml-lockup:hover .rml-mark .slosh {
+    animation: none !important;
+  }
+}
+
+/* Stage 3: filler words struck through with a drawable line (a background,
+   so it can animate and still follows the text across line wraps). */
+.strike {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 58%;
+  background-size: 100% 1.5px;
+}
+
+[data-pipe-ready] .valve-fallback {
+  visibility: hidden;
+}
+
+/* Results rack rail: one bar behind the row on tablet/desktop (rounded only
+   at the ends), one rounded bar per tube in the mobile swipe row. */
+.rack-col .rail { border-radius: 999px; }
+@media (min-width: 640px) {
+  .rack-col .rail { border-radius: 0; border-left-width: 0; border-right-width: 0; }
+  .rack-col:first-child .rail { border-left-width: 3px; border-radius: 999px 0 0 999px; }
+  .rack-col:last-child .rail { border-right-width: 3px; border-radius: 0 999px 999px 0; }
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Hover/focus on a tube: the meniscus tilts and settles. */
+.tube-surface {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .rack-col:hover .tube-surface,
+  .rack-col:focus-within .tube-surface {
+    animation: tube-wobble 500ms ease-out;
+  }
+}
+@keyframes tube-wobble {
+  0%, 100% { transform: rotate(0); }
+  30% { transform: rotate(-3deg); }
+  65% { transform: rotate(1.5deg); }
+}
+
+/* Results tubes: idle bubbles once the tube has finished its sequence. */
+.tube-idle {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.rack-col.is-bubbling .tube-idle {
+  animation: tube-idle var(--dur, 7s) ease-in infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes tube-idle {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  82% { transform: translateY(var(--rise)) scale(1); opacity: 1; }
+  90% { transform: translateY(var(--rise)) scale(1.6); opacity: 0; }
+  100% { transform: translateY(var(--rise)) scale(1.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rack-col.is-bubbling .tube-idle { animation: none; }
+}
+
+/* Case study cards: shadow flashes green when a results tube links here. */
+.case-card {
+  box-shadow: 0 8px 0 var(--ink);
+  transition: box-shadow 250ms ease;
+}
+.case-card--flash {
+  box-shadow: 0 8px 0 var(--solution);
+}
+
+/* Thank-you page: the logo's three tubes fill once. */
+.fill-once .slosh {
+  animation: tube-fill 900ms cubic-bezier(0.3, 1.35, 0.45, 1) both;
+}
+.fill-once .slosh:nth-of-type(2) { animation-delay: 150ms; }
+.fill-once .slosh:nth-of-type(3) { animation-delay: 300ms; }
+@keyframes tube-fill {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fill-once .slosh { animation: none; }
+}
+
+/* Case study pages: long-form body copy. */
+.case-prose {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.case-prose > section + section { margin-top: 3rem; }
+.case-prose h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+  text-wrap: balance;
+}
+.case-prose h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.9rem;
+  text-wrap: balance;
+}
+@media (min-width: 768px) { .case-prose h3 { font-size: 27px; } }
+.case-prose p { margin: 0 0 1.1rem; }
+.case-prose strong { color: var(--ink); }
+.case-prose ul,
+.case-prose ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+.case-prose li { margin: 0.35rem 0; }
+.case-prose figure { margin: 2rem 0; }
+.case-prose figcaption {
+  margin-top: 0.9rem;
+  font-size: 15px;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
+}
+.case-prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.25rem;
+  border-left: 4px solid var(--solution);
+  border-radius: 0 18px 18px 0;
+  background: var(--glass);
+  font-style: italic;
+  color: var(--ink);
+}
+.case-prose blockquote p:last-child { margin-bottom: 0; }
+.case-table {
+  margin: 1.75rem 0;
+  overflow-x: auto;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: var(--glass);
+}
+.case-table table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.45; }
+.case-table th {
+  background: var(--ink);
+  color: var(--bench-dark-ink);
+  text-align: left;
+  font-weight: 700;
+  padding: 0.65rem 0.9rem;
+  white-space: nowrap;
+}
+.case-table td {
+  padding: 0.65rem 0.9rem;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink-soft);
+}
+
+/* Hero headline: sized so it never runs past 3 lines beside the flask. */
+.display-h1.hero-h1 {
+  font-size: clamp(46px, 5.9vw, 94px);
+}
+@media (max-width: 420px) {
+  .display-h1.hero-h1 { font-size: 11vw; }
+}
+@media (min-width: 1024px) and (max-width: 1180px) {
+  /* narrowest two-column width: the copy column is tight beside the flask */
+  .display-h1.hero-h1 { font-size: 5.4vw; }
 }

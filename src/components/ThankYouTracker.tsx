@@ -1,21 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
+import { pushDataLayer } from "@/lib/dataLayer";
 import { readClientUtmCookie } from "@/lib/utm";
-
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-  }
-}
 
 export function ThankYouTracker() {
   useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "generate_lead",
-      ...readClientUtmCookie(),
-    });
+    const leadId = new URLSearchParams(window.location.search).get("lead_id") ?? undefined;
+    pushDataLayer({ event: "generate_lead", lead_id: leadId, ...readClientUtmCookie() });
   }, []);
 
   return null;

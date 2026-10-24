@@ -1,37 +1,40 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { WaitlistForm } from "@/components/WaitlistForm";
-import { SITE } from "@/lib/content";
+import Link from "next/link";
+import { Nav } from "@/components/apparatus/Nav";
+import { SiteFooter } from "@/components/apparatus/SiteFooter";
+import { DECLINED } from "@/lib/apparatus";
 
 export const metadata: Metadata = {
-  title: `Thanks for applying — ${SITE.name}`,
+  title: "Thanks for applying | Revenue Media Lab",
   description: "We've received your application.",
+  robots: { index: false },
 };
 
 export default function DeclinedPage() {
   return (
-    <>
-      <Header />
-      <main className="bg-white">
-        <div className="mx-auto max-w-xl px-6 py-20 text-center">
-          <h1 className="h2-display text-foreground">Thanks for applying</h1>
-          <p className="mt-4 leading-relaxed text-muted">
-            Based on what you shared, the Revenue Media Engine isn&apos;t the right fit right
-            now — it&apos;s built for businesses doing $100k+ in monthly revenue, where the
-            attribution and team-install work has the room to pay for itself. That&apos;s not a
-            reflection on where you&apos;re headed, just where the engagement makes sense today.
-          </p>
-          <p className="mt-4 leading-relaxed text-muted">
-            If you&apos;d like to stay in the loop for when that changes — or for lower-ticket
-            resources as they become available — leave your email below.
-          </p>
-          <div className="mt-8">
-            <WaitlistForm />
+    <div className="apparatus flex min-h-screen flex-col">
+      <Nav minimal />
+      <main className="mx-auto w-full max-w-[760px] flex-1 px-4 pb-20 pt-6 sm:px-6">
+        <div className="flex flex-col gap-6 rounded-[32px] border-2 border-ink bg-glass p-6 shadow-[0_8px_0_var(--ink)] md:p-10">
+          <h1 className="display-h2 m-0">{DECLINED.headline}</h1>
+          <p className="m-0 text-[19px] leading-[1.55] text-ink-soft">{DECLINED.body}</p>
+          <ul className="m-0 flex list-none flex-col gap-2 p-0">
+            {DECLINED.resources.map((r) => (
+              <li key={r.href}>
+                <a href={r.href} className="text-[17px] font-bold text-solution-dark underline underline-offset-4">
+                  {r.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/" className="btn-text !px-0">
+              Back to the homepage
+            </Link>
           </div>
         </div>
       </main>
-      <Footer />
-    </>
+      <SiteFooter />
+    </div>
   );
 }

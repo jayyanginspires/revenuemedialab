@@ -1,63 +1,46 @@
 import { ImageResponse } from "next/og";
-import { HERO, SITE } from "@/lib/content";
+import { HERO } from "@/lib/apparatus";
 
-export const alt = SITE.name;
+// [[OG IMAGE]] Stand-in share card built from the live hero copy until a
+// designed image is supplied.
+export const alt = "Revenue Media Lab";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const INK = "#12181A";
-const ACCENT = "#1F8F5C";
-const PAPER = "#F7F9F7";
-const MUTED = "#5B6663";
-const BORDER = "#DCE5E0";
+const SOLUTION = "#1F8F5C";
+const BENCH = "#F4F8F6";
+const INK_SOFT = "#2E3A37";
 
-// Split HERO.headline on its accent phrase so the card tracks the site copy
-// instead of drifting. Hardcoding the lines is what let the image keep saying
-// "organic content" after the hero changed to "written media". Explicit lines
-// also stop a short word orphaning onto a line of its own.
-const accentAt = HERO.headline.toLowerCase().lastIndexOf(HERO.headlineAccent.toLowerCase());
-const HEADLINE_LEAD =
-  accentAt > 0 ? HERO.headline.slice(0, accentAt).trim() : HERO.headline;
-const HEADLINE_ACCENT =
-  accentAt > 0 ? HERO.headline.slice(accentAt) : HERO.headlineAccent;
+const TUBES = [
+  { x: 4, y: 34, h: 54, fill: 0.39 },
+  { x: 34, y: 18, h: 70, fill: 0.58 },
+  { x: 64, y: 4, h: 84, fill: 0.76 },
+];
 
-// The real mark, inlined. Satori has no access to the theme tokens the live
-// component uses, so the values are resolved here.
 function Mark({ size: s }: { size: number }) {
-  const h = Math.round((s * 92) / 86);
   return (
-    <svg width={s} height={h} viewBox="0 0 86 92">
-      <defs>
-        <clipPath id="m1">
-          <rect x="2" y="8" width="22" height="76" rx="11" />
-        </clipPath>
-        <clipPath id="m2">
-          <rect x="32" y="8" width="22" height="76" rx="11" />
-        </clipPath>
-        <clipPath id="m3">
-          <rect x="62" y="8" width="22" height="76" rx="11" />
-        </clipPath>
-      </defs>
-      <g clipPath="url(#m1)">
-        <rect x="2" y="60" width="22" height="30" fill={ACCENT} />
-      </g>
-      <g clipPath="url(#m2)">
-        <rect x="32" y="46" width="22" height="44" fill={ACCENT} />
-      </g>
-      <g clipPath="url(#m3)">
-        <rect x="62" y="32" width="22" height="58" fill={ACCENT} />
-      </g>
-      <rect x="2" y="8" width="22" height="76" rx="11" fill="none" stroke={INK} strokeWidth="4" />
-      <rect x="32" y="8" width="22" height="76" rx="11" fill="none" stroke={INK} strokeWidth="4" />
-      <rect x="62" y="8" width="22" height="76" rx="11" fill="none" stroke={INK} strokeWidth="4" />
-      <rect x="0" y="4" width="26" height="5" rx="2.5" fill={INK} />
-      <rect x="30" y="4" width="26" height="5" rx="2.5" fill={INK} />
-      <rect x="60" y="4" width="26" height="5" rx="2.5" fill={INK} />
+    <svg width={s} height={Math.round((s * 92) / 86)} viewBox="0 0 86 92">
+      {TUBES.map((t) => {
+        const fillH = Math.round((t.h - 4) * t.fill);
+        return <rect key={`f${t.x}`} x={t.x + 2} y={t.y + t.h - 2 - fillH} width="14" height={fillH} rx="7" fill={SOLUTION} />;
+      })}
+      {TUBES.map((t) => (
+        <rect key={`o${t.x}`} x={t.x} y={t.y} width="18" height={t.h} rx="9" fill="none" stroke={INK} strokeWidth="4" />
+      ))}
     </svg>
   );
 }
 
+async function loadAnton() {
+  const css = await fetch("https://fonts.googleapis.com/css2?family=Anton&display=swap").then((r) => r.text());
+  const url = css.match(/src: url\((.+?)\) format/)?.[1];
+  return url ? fetch(url).then((r) => r.arrayBuffer()) : null;
+}
+
 export default async function OpengraphImage() {
+  const anton = await loadAnton().catch(() => null);
+  const display = anton ? "Anton" : "Arial, Helvetica, sans-serif";
   return new ImageResponse(
     (
       <div
@@ -66,94 +49,35 @@ export default async function OpengraphImage() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          padding: "64px 72px",
-          background: PAPER,
+          padding: "60px 72px",
+          background: BENCH,
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
-        {/* brand lockup */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <Mark size={46} />
-          <div
-            style={{
-              display: "flex",
-              color: INK,
-              fontSize: 30,
-              fontWeight: 800,
-              letterSpacing: "-0.01em",
-              textTransform: "uppercase",
-            }}
-          >
-            Revenue Media&nbsp;<span style={{ color: ACCENT }}>Lab</span>
+          <div style={{ display: "flex", color: INK, fontSize: 32, fontFamily: display }}>
+            REVENUE MEDIA&nbsp;<span style={{ color: SOLUTION }}>LAB</span>
           </div>
         </div>
-
-        {/* proof strip */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            alignSelf: "flex-start",
-            gap: 12,
-            marginTop: 44,
-            padding: "10px 22px",
-            borderRadius: 999,
-            border: `1px solid ${BORDER}`,
-            background: "#FFFFFF",
-          }}
-        >
-          <div style={{ width: 11, height: 11, borderRadius: 999, background: ACCENT }} />
-          <div
-            style={{
-              display: "flex",
-              color: MUTED,
-              fontSize: 19,
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            {HERO.badge}
-          </div>
-        </div>
-
-        {/* headline. Lines are explicit so "with" can't orphan onto its own line. */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginTop: 40,
+            marginTop: 48,
             color: INK,
-            fontSize: 70,
-            fontWeight: 800,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
+            fontFamily: display,
+            fontSize: 96,
+            lineHeight: 0.95,
+            maxWidth: 1000,
           }}
         >
-          <div style={{ display: "flex" }}>{HEADLINE_LEAD}</div>
-          <div style={{ display: "flex", color: ACCENT }}>{HEADLINE_ACCENT}</div>
+          {HERO.headline}
         </div>
-
-        {/* footer rule */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginTop: "auto",
-            paddingTop: 28,
-            borderTop: `1px solid ${BORDER}`,
-          }}
-        >
-          <div style={{ display: "flex", color: MUTED, fontSize: 22, fontWeight: 600 }}>
-            revenuemedialab.com
-          </div>
-          <div style={{ display: "flex", color: INK, fontSize: 22, fontWeight: 700 }}>
-            16-week install
-          </div>
+        <div style={{ display: "flex", marginTop: "auto", color: INK_SOFT, fontSize: 28, fontWeight: 600 }}>
+          Your fractional content department for X and LinkedIn.
         </div>
       </div>
     ),
-    { ...size }
+    { ...size, fonts: anton ? [{ name: "Anton", data: anton, style: "normal", weight: 400 }] : undefined }
   );
 }

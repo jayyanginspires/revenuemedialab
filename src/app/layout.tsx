@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Instrument_Sans, Anton, Caveat, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { GTMBody, GTMHead } from "@/components/GoogleTagManager";
-import { HERO, SITE } from "@/lib/content";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
@@ -31,9 +30,10 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const title = `${SITE.name} — ${HERO.headline}`;
+const siteName = "Revenue Media Lab";
+const title = "Revenue Media Lab | Founder content for X and LinkedIn";
 const description =
-  "We design and install the same revenue media systems used to scale the biggest brands in the world, into your business, in 16 weeks. For founder-led businesses doing $1–10M in revenue.";
+  "Your fractional content department for X and LinkedIn. We take the raw thinking out of your founder's head, distill it, and ship it every day.";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
-    siteName: SITE.name,
+    siteName,
   },
   twitter: {
     card: "summary_large_image",

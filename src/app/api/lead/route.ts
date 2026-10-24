@@ -2,24 +2,27 @@ import { resolveMx } from "node:dns/promises";
 import { NextRequest, NextResponse, after } from "next/server";
 import { UTM_COOKIE_NAME, parseUtmFromSearchParams, safeParseUtmCookie } from "@/lib/utm";
 import {
-  BOTTLENECK_OPTIONS,
-  BOTTLENECK_OTHER_VALUE,
+  BOTTLENECK_MAX,
+  CHANNEL_OPTIONS,
   HONEYPOT_FIELD,
+  INVESTMENT_OPTIONS,
   MIN_FILL_MS,
-  PLATFORM_OPTIONS,
-  POSTING_FREQUENCY_OPTIONS,
-  REVENUE_NOT_QUALIFYING,
   REVENUE_OPTIONS,
+  TIMING_OPTIONS,
+  isQualified,
 } from "@/lib/leads";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const REVENUE_VALUES = new Set(REVENUE_OPTIONS.map((o) => o.value));
-const PLATFORM_VALUES = new Set(PLATFORM_OPTIONS.map((o) => o.value));
-const POSTING_FREQUENCY_VALUES = new Set(POSTING_FREQUENCY_OPTIONS.map((o) => o.value));
-const BOTTLENECK_VALUES = new Set([
-  ...BOTTLENECK_OPTIONS.map((o) => o.value),
-  BOTTLENECK_OTHER_VALUE,
-]);
+const values = (opts: { value: string }[]) => new Set(opts.map((o) => o.value));
+const CHOICES = {
+  revenue: values(REVENUE_OPTIONS),
+  channels: values(CHANNEL_OPTIONS),
+  timing: values(TIMING_OPTIONS),
+  investment: values(INVESTMENT_OPTIONS),
+};
+const REVENUE_VALUES = values(REVENUE_OPTIONS);
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const WEBSITE_RE = /^(https?:\/\/)?[a-z0-9-]+(\.[a-z0-9-]+)+(\/\S*)?$/i;
 
 // Throwaway inboxes commonly used to get past forms. Not exhaustive — the MX
 // check below catches made-up domains; this catches real-but-disposable ones.
@@ -85,42 +88,32 @@ async function domainAcceptsMail(domain: string): Promise<boolean> {
 }
 
 async function checkEmail(email: string): Promise<Invalid | null> {
-  const bad = { field: "email", error: "Please enter a valid email address." };
+  const bad = { field: "email", error: "Enter your business email so we can send your calendar invite." };
   if (!EMAIL_RE.test(email)) return bad;
   const domain = email.split("@")[1].toLowerCase();
   if (DISPOSABLE_DOMAINS.has(domain)) {
-    return { field: "email", error: "Please use a permanent email address, not a temporary one." };
+    return { field: "email", error: "Use your work email, not a temporary inbox." };
   }
   if (!(await domainAcceptsMail(domain))) return bad;
   return null;
 }
 
+// Messages match the form's own inline errors.
 function checkApplication(lead: Record<string, string>): Invalid | null {
-  if (lead.fullName.length < 2) return { field: "fullName", error: "Please enter your full name." };
+  if (lead.fullName.length < 2) {
+    return { field: "fullName", error: "Enter your name so we know who we're talking to." };
+  }
   if (lead.phone.replace(/\D/g, "").length < 7) {
-    return { field: "phone", error: "Please enter a valid phone number." };
+    return { field: "phone", error: "Enter a phone number so we can reach you before the call." };
   }
-  if (lead.business.length < 2) {
-    return { field: "business", error: "Please tell us about your business." };
+  if (!WEBSITE_RE.test(lead.website)) {
+    return { field: "website", error: "Enter your company website, like acme.com." };
   }
-  if (lead.role.length < 2) {
-    return { field: "role", error: "Please choose your role in the company." };
+  if (lead.bottleneck.length < 2) {
+    return { field: "bottleneck", error: "Tell us a little about where content gets stuck." };
   }
-  if (!REVENUE_VALUES.has(lead.monthlyRevenue)) {
-    return { field: "monthlyRevenue", error: "Please choose your monthly revenue." };
-  }
-  const platforms = lead.platforms ? lead.platforms.split(",") : [];
-  if (platforms.length === 0 || !platforms.every((p) => PLATFORM_VALUES.has(p))) {
-    return { field: "platforms", error: "Please choose at least one platform you want to scale on." };
-  }
-  if (!POSTING_FREQUENCY_VALUES.has(lead.postingFrequency)) {
-    return { field: "postingFrequency", error: "Please choose how often you currently post." };
-  }
-  if (!BOTTLENECK_VALUES.has(lead.bottleneck)) {
-    return { field: "bottleneck", error: "Please choose your biggest bottleneck." };
-  }
-  if (lead.bottleneck === BOTTLENECK_OTHER_VALUE && lead.bottleneckOther.length < 2) {
-    return { field: "bottleneck", error: "Please briefly describe your bottleneck." };
+  for (const [field, allowed] of Object.entries(CHOICES)) {
+    if (!allowed.has(lead[field])) return { field, error: "Pick the option that fits best." };
   }
   return null;
 }
@@ -153,59 +146,78 @@ export async function POST(request: NextRequest) {
   const elapsedMs = typeof body.elapsedMs === "number" ? body.elapsedMs : 0;
   if (str(body[HONEYPOT_FIELD], 500) || elapsedMs < MIN_FILL_MS) {
     console.warn("lead: dropped likely bot submission", { elapsedMs });
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, lead_id: crypto.randomUUID(), qualified: false });
   }
-
-  const type = body.type === "application" ? "application" : body.type === "waitlist" ? "waitlist" : null;
-  if (!type) return NextResponse.json({ error: "Unknown lead type" }, { status: 400 });
-
-  // Only known fields are forwarded — nothing arbitrary from the request body.
-  const email = str(body.email, 200).toLowerCase();
-  let lead: Record<string, string | boolean>;
-  let invalid: Invalid | null;
-
-  if (type === "application") {
-    const fields = {
-      fullName: str(body.fullName, 120),
-      email,
-      phone: str(body.phone, 40),
-      business: str(body.business, 2000),
-      role: str(body.role, 120),
-      monthlyRevenue: str(body.monthlyRevenue, 40),
-      // Joined so it lands in a single Zapier/sheet column, e.g. "x,linkedin".
-      platforms: Array.isArray(body.platforms)
-        ? [...new Set(body.platforms.map((p) => str(p, 40)).filter(Boolean))].slice(0, 10).join(",")
-        : "",
-      postingFrequency: str(body.postingFrequency, 40),
-      bottleneck: str(body.bottleneck, 40),
-      bottleneckOther: str(body.bottleneckOther, 500),
-    };
-    invalid = checkApplication(fields) ?? (await checkEmail(email));
-    lead = { ...fields, qualified: !REVENUE_NOT_QUALIFYING.has(fields.monthlyRevenue) };
-  } else {
-    invalid = await checkEmail(email);
-    lead = { email };
-  }
-
-  if (invalid) return NextResponse.json(invalid, { status: 400 });
 
   const utmFromQuery = parseUtmFromSearchParams(request.nextUrl.searchParams);
   const utmFromCookie = safeParseUtmCookie(request.cookies.get(UTM_COOKIE_NAME)?.value);
   const utm = { ...utmFromCookie, ...utmFromQuery };
+  // Client-generated id that ties a partial lead to the full application.
+  const draft = str(body.draft_id, 64);
+  const draft_id = UUID_RE.test(draft) ? draft : null;
+  const email = str(body.email, 200).toLowerCase();
 
-  const payload = {
-    type,
-    ...lead,
-    submittedAt: str(body.submittedAt, 40),
-    utm,
-    receivedAt: new Date().toISOString(),
-  };
+  let payload: Record<string, unknown>;
+  let lead_id: string;
+  let qualified: boolean | undefined;
 
-  const webhookUrl = process.env.ZAPIER_WEBHOOK_URL;
+  if (body.stage === "partial") {
+    // Contact details saved as soon as the visitor gives a valid email, so
+    // someone who drops off before submitting can still be followed up.
+    if (!EMAIL_RE.test(email)) return NextResponse.json({ field: "email", error: "Invalid email" }, { status: 400 });
+    lead_id = draft_id ?? crypto.randomUUID();
+    payload = {
+      type: "partial_application",
+      lead_id,
+      draft_id,
+      fullName: str(body.fullName, 120),
+      email,
+      phone: str(body.phone, 40),
+      website: str(body.website, 300),
+      revenue: REVENUE_VALUES.has(str(body.revenue, 40)) ? str(body.revenue, 40) : "",
+      capturedOn: str(body.capturedOn, 20),
+      ...utm,
+      receivedAt: new Date().toISOString(),
+    };
+  } else {
+    // Only known fields are forwarded — nothing arbitrary from the request body.
+    const fields = {
+      fullName: str(body.fullName, 120),
+      email,
+      phone: str(body.phone, 40),
+      website: str(body.website, 300),
+      revenue: str(body.revenue, 40),
+      channels: str(body.channels, 40),
+      bottleneck: str(body.bottleneck, BOTTLENECK_MAX),
+      timing: str(body.timing, 40),
+      investment: str(body.investment, 40),
+    };
+    const invalid = checkApplication(fields) ?? (await checkEmail(email));
+    if (invalid) return NextResponse.json(invalid, { status: 400 });
+
+    // Same id the form already prefilled the calendar with (it preloads during
+    // step 2), and the same one its partial saves used.
+    lead_id = draft_id ?? crypto.randomUUID();
+    qualified = isQualified(fields.investment, fields.revenue);
+    payload = {
+      type: "application",
+      lead_id,
+      draft_id,
+      ...fields,
+      qualified,
+      submittedAt: str(body.submittedAt, 40),
+      ...utm,
+      receivedAt: new Date().toISOString(),
+    };
+  }
+
+  // ZAPIER_WEBHOOK_URL is the previous name, still honored so a deploy
+  // doesn't silently stop forwarding before the env var is renamed.
+  const webhookUrl = process.env.LEAD_WEBHOOK_URL || process.env.ZAPIER_WEBHOOK_URL;
 
   if (!webhookUrl) {
-    console.warn("ZAPIER_WEBHOOK_URL is not set — lead was not forwarded.", payload);
-    return NextResponse.json({ ok: true, forwarded: false });
+    console.warn("LEAD_WEBHOOK_URL is not set — lead was not forwarded.", payload);
+    return NextResponse.json({ ok: true, lead_id, qualified, forwarded: false });
   }
 
   // Respond immediately — the visitor is waiting on this to move to the next
@@ -227,5 +239,5 @@ export async function POST(request: NextRequest) {
     }
   });
 
-  return NextResponse.json({ ok: true, forwarded: true });
+  return NextResponse.json({ ok: true, lead_id, qualified, forwarded: true });
 }

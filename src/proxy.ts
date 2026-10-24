@@ -6,7 +6,7 @@ import {
   safeParseUtmCookie,
 } from "@/lib/utm";
 
-// Captures utm_source/utm_medium/utm_campaign/fbclid/gclid off any incoming
+// Captures the UTM parameters and click IDs (UTM_KEYS) off any incoming
 // request and persists them in a first-party cookie so they survive
 // navigation across /, /apply, /book, and /book/thank-you even when a page
 // doesn't carry the query string itself.

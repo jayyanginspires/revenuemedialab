@@ -1,38 +1,47 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/Footer";
-import { CalendlyEmbed } from "@/components/CalendlyEmbed";
-import { LogoMark, Wordmark } from "@/components/Logo";
-import { BOOKING, SITE } from "@/lib/content";
+import { Nav } from "@/components/apparatus/Nav";
+import { SiteFooter } from "@/components/apparatus/SiteFooter";
+import { BookingEmbed } from "@/components/apparatus/BookingEmbed";
+import { BOOK } from "@/lib/apparatus";
 
 export const metadata: Metadata = {
-  title: `Book Your Call — ${SITE.name}`,
-  description: "Pick a time for your Revenue Media Engine strategy call.",
+  title: "Pick a time | Revenue Media Lab",
+  description: "Book a 30-minute call with the Revenue Media Lab team.",
+  robots: { index: false },
 };
 
-export default function BookPage() {
+const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? "";
+
+export default async function BookPage({ searchParams }: PageProps<"/book">) {
+  const q = await searchParams;
   return (
-    <>
-      <main className="bg-dark-bg">
-        <div
-          className="mx-auto flex max-w-2xl flex-col items-center px-6 pb-6 pt-14 text-center"
-          style={
-            {
-              "--foreground": "var(--dark-ink)",
-              "--color-foreground": "var(--color-dark-ink)",
-            } as React.CSSProperties
-          }
-        >
-          <div className="flex items-center gap-2.5">
-            <LogoMark className="h-6 w-auto" />
-            <Wordmark className="text-[15px] sm:text-lg" />
+    <div className="apparatus flex min-h-screen flex-col">
+      <Nav minimal />
+      <main className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-20 pt-6 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:items-start">
+          <div className="flex flex-col gap-5 lg:sticky lg:top-8">
+            <h1 className="display-h2 m-0">{BOOK.headline}</h1>
+            <ul className="m-0 flex list-none flex-col gap-3 p-0">
+              {BOOK.lines.map((line) => (
+                <li key={line} className="text-[19px] leading-[1.5] text-ink-soft">
+                  {line}
+                </li>
+              ))}
+            </ul>
+            <p className="m-0 text-[13px] text-muted">{BOOK.confirm}</p>
           </div>
-          <h1 className="h2-display mt-8 text-dark-ink">Step 2: Schedule Your Call</h1>
-        </div>
-        <div className="mx-auto max-w-3xl px-6 pb-20">
-          <CalendlyEmbed calendlyUrl={BOOKING.calendlyUrl} />
+          <div className="overflow-hidden rounded-[32px] border-2 border-ink bg-glass shadow-[0_8px_0_var(--ink)]">
+            <BookingEmbed
+              calendlyUrl={BOOK.calendlyUrl}
+              name={first(q.name)}
+              email={first(q.email)}
+              phone={first(q.phone)}
+              leadId={first(q.lead_id)}
+            />
+          </div>
         </div>
       </main>
-      <Footer />
-    </>
+      <SiteFooter />
+    </div>
   );
 }
