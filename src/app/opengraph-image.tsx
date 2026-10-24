@@ -1,9 +1,11 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { HERO } from "@/lib/apparatus";
 
-// [[OG IMAGE]] Stand-in share card built from the live hero copy until a
-// designed image is supplied.
-export const alt = "Revenue Media Lab";
+// Share card that mirrors the hero: the tag, the headline with the X and
+// LinkedIn app icons in place of the platform names, and the subhead.
+export const alt = "Revenue Media Lab: your fractional content department for X and LinkedIn";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -11,6 +13,10 @@ const INK = "#12181A";
 const SOLUTION = "#1F8F5C";
 const BENCH = "#F4F8F6";
 const INK_SOFT = "#2E3A37";
+
+// The same app icons the hero uses, as data URLs for <img>.
+const icon = async (name: string) =>
+  `data:image/svg+xml;base64,${(await readFile(join(process.cwd(), "public/brand/platforms", `${name}.svg`))).toString("base64")}`;
 
 const TUBES = [
   { x: 4, y: 34, h: 54, fill: 0.39 },
@@ -32,15 +38,22 @@ function Mark({ size: s }: { size: number }) {
   );
 }
 
-async function loadAnton() {
-  const css = await fetch("https://fonts.googleapis.com/css2?family=Anton&display=swap").then((r) => r.text());
+async function loadFont(family: string) {
+  const css = await fetch(`https://fonts.googleapis.com/css2?family=${family}&display=swap`).then((r) => r.text());
   const url = css.match(/src: url\((.+?)\) format/)?.[1];
   return url ? fetch(url).then((r) => r.arrayBuffer()) : null;
 }
 
 export default async function OpengraphImage() {
-  const anton = await loadAnton().catch(() => null);
+  const [anton, body, bodyBold, x, linkedin] = await Promise.all([
+    loadFont("Anton").catch(() => null),
+    loadFont("Instrument+Sans:wght@400").catch(() => null),
+    loadFont("Instrument+Sans:wght@700").catch(() => null),
+    icon("x"),
+    icon("linkedin"),
+  ]);
   const display = anton ? "Anton" : "Arial, Helvetica, sans-serif";
+  const iconSize = 84;
   return new ImageResponse(
     (
       <div
@@ -49,35 +62,63 @@ export default async function OpengraphImage() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          padding: "60px 72px",
+          padding: "56px 72px",
           background: BENCH,
-          fontFamily: "Arial, Helvetica, sans-serif",
+          fontFamily: body ? "Instrument Sans" : "Arial, Helvetica, sans-serif",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <Mark size={46} />
-          <div style={{ display: "flex", color: INK, fontSize: 32, fontFamily: display }}>
+          <Mark size={42} />
+          <div style={{ display: "flex", color: INK, fontSize: 30, fontFamily: display }}>
             REVENUE MEDIA&nbsp;<span style={{ color: SOLUTION }}>LAB</span>
           </div>
         </div>
         <div
           style={{
             display: "flex",
-            marginTop: 48,
+            alignSelf: "flex-start",
+            marginTop: 40,
+            padding: "10px 24px",
+            border: `3px solid ${INK}`,
+            borderRadius: 999,
             color: INK,
-            fontFamily: display,
-            fontSize: 96,
-            lineHeight: 0.95,
-            maxWidth: 1000,
+            fontSize: 26,
+            fontWeight: 700,
           }}
         >
-          {HERO.headline}
+          {HERO.tag}
         </div>
-        <div style={{ display: "flex", marginTop: "auto", color: INK_SOFT, fontSize: 28, fontWeight: 600 }}>
-          Your fractional content department for X and LinkedIn.
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: 26,
+            color: INK,
+            fontFamily: display,
+            fontSize: 92,
+            lineHeight: 1,
+          }}
+        >
+          <div style={{ display: "flex" }}>YOUR FRACTIONAL CONTENT</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
+            DEPARTMENT FOR
+            <img src={x} width={iconSize} height={iconSize} alt="" />
+            AND
+            <img src={linkedin} width={iconSize} height={iconSize} alt="" />
+          </div>
+        </div>
+        <div style={{ display: "flex", marginTop: "auto", maxWidth: 1000, color: INK_SOFT, fontSize: 28, lineHeight: 1.4 }}>
+          {HERO.subhead}
         </div>
       </div>
     ),
-    { ...size, fonts: anton ? [{ name: "Anton", data: anton, style: "normal", weight: 400 }] : undefined }
+    {
+      ...size,
+      fonts: [
+        anton && { name: "Anton", data: anton, style: "normal" as const, weight: 400 as const },
+        body && { name: "Instrument Sans", data: body, style: "normal" as const, weight: 400 as const },
+        bodyBold && { name: "Instrument Sans", data: bodyBold, style: "normal" as const, weight: 700 as const },
+      ].filter((f) => !!f),
+    }
   );
 }

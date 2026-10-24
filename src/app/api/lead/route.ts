@@ -21,6 +21,9 @@ const CHOICES = {
   investment: values(INVESTMENT_OPTIONS),
 };
 const REVENUE_VALUES = values(REVENUE_OPTIONS);
+// Readable answer for the sheet ("$10M+/year" rather than "10m_plus").
+const labelOf = (opts: { value: string; label: string }[], value: string) =>
+  opts.find((o) => o.value === value)?.label ?? "";
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const WEBSITE_RE = /^(https?:\/\/)?[a-z0-9-]+(\.[a-z0-9-]+)+(\/\S*)?$/i;
 
@@ -175,6 +178,8 @@ export async function POST(request: NextRequest) {
       phone: str(body.phone, 40),
       website: str(body.website, 300),
       revenue: REVENUE_VALUES.has(str(body.revenue, 40)) ? str(body.revenue, 40) : "",
+      revenueLabel: labelOf(REVENUE_OPTIONS, str(body.revenue, 40)),
+      status: "Partial",
       capturedOn: str(body.capturedOn, 20),
       ...utm,
       receivedAt: new Date().toISOString(),
@@ -204,7 +209,14 @@ export async function POST(request: NextRequest) {
       lead_id,
       draft_id,
       ...fields,
+      revenueLabel: labelOf(REVENUE_OPTIONS, fields.revenue),
+      channelsLabel: labelOf(CHANNEL_OPTIONS, fields.channels),
+      timingLabel: labelOf(TIMING_OPTIONS, fields.timing),
+      investmentLabel: labelOf(INVESTMENT_OPTIONS, fields.investment),
       qualified,
+      // Matches the sheet's Qualified? dropdown and Status column.
+      qualifiedLabel: qualified ? "Qualified" : "Declined",
+      status: "Application",
       submittedAt: str(body.submittedAt, 40),
       ...utm,
       receivedAt: new Date().toISOString(),
