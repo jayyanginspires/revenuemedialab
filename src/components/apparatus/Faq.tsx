@@ -3,10 +3,10 @@
 import { useId, useState } from "react";
 import { FAQ, FAQ_HEADLINE } from "@/lib/apparatus";
 
-// One open at a time. Native <button>s give Enter/Space; panels are
+// All start closed; one open at a time. Native <button>s give Enter/Space; panels are
 // regions labelled by their question.
 export function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
   const base = useId();
 
   return (

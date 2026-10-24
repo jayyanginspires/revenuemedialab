@@ -67,7 +67,7 @@ function goToCase(e: MouseEvent, id: string) {
 function Tube({ tube, i }: { tube: ResultTube; i: number }) {
   const lineY = yAt(beforePct(tube));
   return (
-    <li data-tube={i} className="rack-col group flex w-[78%] shrink-0 snap-center flex-col items-center sm:w-auto">
+    <li data-tube={i} className="rack-col group flex w-[72%] shrink-0 snap-center flex-col items-center sm:w-auto">
       <div className="relative flex w-full cursor-pointer justify-center" onClick={(e) => goToCase(e, tube.caseId)}>
         <span data-pipe="drop" className="absolute left-1/2 top-0 h-0 w-0" />
         <span
@@ -339,7 +339,10 @@ export function Results() {
       >
         <ul
           ref={scrollerRef}
-          className="no-scrollbar -mx-4 my-0 flex list-none snap-x snap-mandatory gap-0 overflow-x-auto px-[11%] pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0"
+          // Spacers at both ends of the swipe row are (100% - tube width) / 2, so
+          // every tube, first and last included, snaps to the panel's center
+          // with its neighbors peeking evenly on each side.
+          className="no-scrollbar relative -mx-4 my-0 flex list-none snap-x snap-mandatory gap-0 overflow-x-auto pb-2 before:block before:w-[14%] before:shrink-0 before:content-[''] after:block after:w-[14%] after:shrink-0 after:content-[''] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:before:hidden sm:after:hidden"
         >
           {RESULTS.tubes.map((tube, i) => (
             <Tube key={i} tube={tube} i={i} />
