@@ -39,11 +39,14 @@ export function LinkButton({
   variant = "primary",
   className = "",
   children,
-}: CommonProps & { href: string }) {
+  target,
+}: CommonProps & { href: string; target?: string }) {
   return (
     <Link
       href={href}
       onClick={href === "/#apply" ? scrollToApply : undefined}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       className={`${base} ${variants[variant]} ${className}`}
     >
       {children}
