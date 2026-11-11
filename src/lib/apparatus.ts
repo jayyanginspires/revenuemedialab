@@ -360,7 +360,7 @@ export const BOOK = {
   // brand-audit event. [[CALENDLY EVENT URL]] for this offer still to confirm.
   calendlyUrl:
     process.env.NEXT_PUBLIC_CALENDLY_URL ||
-    "https://calendly.com/jay-revenuemedialab/brand-audit?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=1f8f5c",
+    "https://calendly.com/xavier-revenuemedialab/brand-audit-rml?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=1f8f5c",
 };
 
 export const THANK_YOU = {
